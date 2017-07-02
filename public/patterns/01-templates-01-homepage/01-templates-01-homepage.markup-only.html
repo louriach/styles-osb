@@ -515,13 +515,22 @@
     });
   </script>
 
-  <script type="text/javascript">
-    $(function() {
-      $('input[name="daterange"]').daterangepicker({
-        locale: {
-          format: 'MM/DD/YYYY'
-        }
-      });
+  <script>
+    $(document).ready(function() {
+      $('.date-popout')
+        .datepicker({
+          autoclose: true,
+          format: 'dd/mm/yyyy'
+        })
+    });
+  </script>
+
+  <script>
+    $(document).ready(function() {
+      $('.onoffswitch-checkbox')
+        .click(function() {
+          $('.date-return').toggleClass('inactive');
+        })
     });
   </script>
 
