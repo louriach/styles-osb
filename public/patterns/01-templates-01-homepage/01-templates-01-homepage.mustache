@@ -1,0 +1,530 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="">
+  <meta name="author" content="">
+  <title>OneStepBooking.com</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Logo slider -->
+  <link href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css" rel="stylesheet">
+  <script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+  <!-- Checkbox toggle switch -->
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+  <!-- Custom date range -->
+  <script type="text/javascript" src="http://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+</head>
+
+<body>
+  <header class="header">
+    <nav class="[ relative z--1 ] navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="[ button button--outline ] navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+            </button>
+          <a class="navbar-brand" href="#">
+              OneStepBooking.com
+            </a>
+        </div>
+        <div id="navbar" class="[ navbar-collapse collapse ]">
+          <ul class="list--none menu-list">
+            <li>
+              <a href="#" class="text--uppercase link__border link__border link__border nav__item">Our airlines</a>
+            </li>
+            <li>
+              <a href="#" class="text--uppercase link__border nav__item">Get in touch</a>
+            </li>
+            <li>
+              <a href="#" class="text--uppercase link__border link__border nav__item">About us</a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="text--uppercase relative link__border nav__item dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  Your booking
+                </a>
+              <ul class="p--2 list--none [ dropdown-menu pull-right ] background--white">
+                <li>
+                  <a href="#" class="text--uppercase [ pb--1 pt--1 ]">Action</a>
+                </li>
+                <li>
+                  <a href="#" class="text--uppercase [ pb--1 pt--1 ]">Another action</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <section class="clearfix relative hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-push-2">
+          <form class="js-search-form">
+            <fieldset>
+              <legend class="h1 [ text--center text--white ]">One Easy Flight Search.</legend>
+              <div class="col-xs-12 col-md-12">
+                <div class="[ p--1 mb--2 ] [ alert alert-danger alert-dismissible ]" role="alert">
+                  <strong>First name</strong>: Error text
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-12">
+                <div class="[ p--1 mb--2 ] [ alert alert-warning alert-dismissible ]" role="alert">
+                  <strong>Last name</strong>: Error text
+                </div>
+              </div>
+              <div class="[ col-xs-12 col-sm-6 col-md-6 ] mb--3 form-error">
+                <label class="d--block text--white mb--1 hidden-xs" for="flight-from">Travelling from</label>
+                <input type="text" id="flight-from" name="flight-from" placeholder="From" value="" class="col-xs-12">
+              </div>
+              <div class="[ col-xs-12 col-sm-6 col-md-6 ] mb--3 form-error">
+                <label class="d--block text--white mb--1 hidden-xs" for="flight-to">Travelling to</label>
+                <input type="text" id="flight-to" name="flight-to" placeholder="To" value="" class="col-xs-12">
+              </div>
+              <div class="[ col-xs-9 col-sm-5 col-md-5 ] mb--3">
+                <label class="d--block text--white mb--1" for="flight-departure"><span class="hidden-xs">Date</span> Departing</label>
+                <input type="text" id="flight-departure" name="daterange" placeholder="Date" value="2017-08-19" class="col-xs-12">
+              </div>
+              <div class="[ col-xs-3 col-sm-2 col-md-2 ] mb--3">
+                <div class="d--inline-block [ text--white text--center ] mb--1">Return?</div>
+                <div class="onoffswitch">
+                  <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                  <label class="onoffswitch-label small" for="myonoffswitch">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="[ col-xs-12 col-sm-5 col-md-5 ] mb--3">
+                <label class="d--block text--white mb--1" for="flight-return"><span class="hidden-xs">Date</span> Returning</label>
+                <input type="date" id="flight-return" name="flight-return" placeholder="Date" value="2017-08-19" class="col-xs-12">
+              </div>
+              <div class="[ col-xs-6 col-sm-6 col-md-6 ] mb--3">
+                <label class="d--block text--white mb--1" for="flight-passengers">Adults</label>
+                <select id="flight-passengers" name="flight-passengers" placeholder="Passengers" value="" class="col-xs-12">
+                <option value="one">1</option>
+                <option value="two">2</option>
+                <option value="three">3</option>
+                <option value="four">4</option>
+              </select>
+              </div>
+              <div class="[ col-xs-6 col-sm-6 col-md-6 ] mb--3">
+                <label class="d--block text--white mb--1" for="flight-passenger-18">Under 18s</label>
+                <select id="flight-passengers-18" name="flight-passengers-18" placeholder="Passengers" value="" class="col-xs-12">
+                <option value="zero">0</option>
+                <option value="one">1</option>
+                <option value="two">2</option>
+                <option value="three">3</option>
+                <option value="four">4</option>
+              </select>
+              </div>
+              <div class="[ col-xs-12 col-sm-12 col-md-6 col-md-push-3 ] text--center">
+                <button class="[ button button--orange ] col-md-12">Search for flights</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="border-bottom text--center [ mb--3 pt--3 pb--3 ] brands [ regular slider ]">
+    <div><img alt="Aer Lingus" src="/images/onestepbooking__logo--aer-lingus.png"></div>
+    <div><img alt="Air Asia" src="/images/onestepbooking__logo--air-asia.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--airarabia.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--cebu-pacific.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--cityjet.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--corendon.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--easyjet.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--eurowings.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--flybe.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--eurowings.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--flyscoot.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--jet2.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--monarch.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--norwegian.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--pegasus.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--ryanair.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--southwest.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--spirit.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--sun-express.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--thomas-cook.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--transavia.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--tui-fly.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--virgin-australia.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--volotea.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--vueling.png"></div>
+    <div><img alt="Air Arabia" src="/images/onestepbooking__logo--eurowings.png"></div>
+  </section>
+
+  <section class="[ mb--3 pt--2 pb--3 ] live-prices">
+    <div class="container">
+      <div class="row">
+        <div class="text--center col-md-12">
+          <h2>Live bookings: One way</h2>
+        </div>
+        <ul class="list--inline text--center col-md-12 [ nav nav-tabs ] scrolling-list" role="tablist">
+          <li class="list--none mr--1 text--lighter small">
+            Departing:
+          </li>
+          <li class="list--none nav-item active">
+            <a href="#manchester" class="text--black button nav-link" data-toggle="tab" role="tab">Manchester</a>
+          </li>
+          <li class="list--none nav-item">
+            <a href="#london" class="text--black button nav-link" data-toggle="tab" role="tab">London</a>
+          </li>
+          <li class="list--none nav-item">
+            <a href="#liverpool" class="text--black button nav-link" data-toggle="tab" role="tab">Liverpool</a>
+          </li>
+          <li class="list--none nav-item">
+            <a href="#edinburgh" class="text--black button nav-link" data-toggle="tab" role="tab">Edinburgh</a>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane active" id="manchester" role="tabpanel">
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">MCR</abbr> <i class="fa fa-plane"></i> Paris (CDG)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                    <span class="pr--1">18 Oct 17</span>
+                  <strong>£999</strong>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">MCR</abbr> <i class="fa fa-plane"></i> Berlin (BER)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                    <span class="pr--1">18 Oct 17</span>
+                  <strong>£999</strong>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">MCR</abbr> <i class="fa fa-plane"></i> Barcelona (BCN)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                    <span class="pr--1">18 Oct 17</span>
+                  <strong>£999</strong>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">MCR</abbr> <i class="fa fa-plane"></i> Dublin (DUB)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                    <span class="pr--1">18 Oct 17</span>
+                  <strong>£999</strong>
+                  </span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="tab-pane" id="london" role="tabpanel">
+            <div class="[ col-xs-6 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search">
+                <div class="col-md-4"><i class="fa fa-plane"></i> <span class="text--lighter">to</span> Palma</div>
+                <div class="col-md-3">18 Oct 17</div>
+                <div class="col-xs-6 col-md-2">
+                  <strong>£60</strong>
+                </div>
+                <div class="col-xs-6 col-md-3 cta">
+                  <span class="button button--green">Buy</span>
+                </div>
+              </a>
+            </div>
+            <div class="[ col-xs-6 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search">
+                <div class="col-md-4"><i class="fa fa-plane"></i> <span class="text--lighter">to</span> Palma</div>
+                <div class="col-md-3">18 Oct 17</div>
+                <div class="col-xs-6 col-md-2">
+                  <strong>£60</strong>
+                </div>
+                <div class="col-xs-6 col-md-3 cta">
+                  <span class="button button--green">Buy</span>
+                </div>
+              </a>
+            </div>
+            <div class="[ col-xs-6 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search">
+                <div class="col-md-4"><i class="fa fa-plane"></i> <span class="text--lighter">to</span> Palma</div>
+                <div class="col-md-3">18 Oct 17</div>
+                <div class="col-xs-6 col-md-2">
+                  <strong>£60</strong>
+                </div>
+                <div class="col-xs-6 col-md-3 cta">
+                  <span class="button button--green">Buy</span>
+                </div>
+              </a>
+            </div>
+            <div class="[ col-xs-6 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search">
+                <div class="col-md-4"><i class="fa fa-plane"></i> <span class="text--lighter">to</span> Palma</div>
+                <div class="col-md-3">18 Oct 17</div>
+                <div class="col-xs-6 col-md-2">
+                  <strong>£25</strong>
+                </div>
+                <div class="col-xs-6 col-md-3 cta">
+                  <span class="button button--green">Buy</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="tab-pane" id="liverpool" role="tabpanel">
+            Liverpool
+          </div>
+          <div class="tab-pane" id="edinburgh" role="tabpanel">
+            Edinburgh
+          </div>
+        </div>
+
+        <div class="mt--3 col-xs-12 col-md-12">
+          <p>Prices shown are for one-way flights that our customers have recently found and started to book, so should be a good indication of popular routes and flight times. They are for reference only but we hope they help you find flights that offer
+            exceptional value.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb--3 latest-offers">
+    <div class="container">
+      <div class="row">
+        <div class="text--center col-md-12">
+          <h2>Latest offers</h2>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h4">Cheapest flights from</h3>
+          <ul class="list--inline scrolling-list">
+            <li>
+              <a href="#" class="button button--outline">London</a>
+            </li>
+            <li>
+              <a href="#" class="button button--outline">Gatwick</a>
+            </li>
+            <li>
+              <a href="#" class="button button--outline">Manchester</a>
+            </li>
+            <li>
+              <a href="#" class="button button--outline">Stansted</a>
+            </li>
+            <li>
+              <a href="#" class="button button--outline">Luton</a>
+            </li>
+            <li>
+              <a href="#" class="button button--outline">Heathrow</a>
+            </li>
+            <li>
+              <a href="#" class="button button--outline">Birmingham</a>
+            </li>
+            <li>
+              <a href="#" class="button button--outline">Glasgow</a>
+            </li>
+            <li>
+              <a href="#" class="button button--outline">Edinburgh</a>
+            </li>
+            <li>
+              <a href="#" class="button button--outline">Liverpool</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h4">Cheapest flights to</h3>
+          <ul class="list--inline scrolling-list">
+            <li>
+              <a href="#" class="button button--outline">London</a>
+            </li>
+            <li>
+              <a href="#" class="button button--outline">Gatwick</a>
+            </li>
+            <li>
+              <a href="#" class="button button--outline">Manchester</a>
+            </li>
+            <li>
+              <a href="#" class="button button--outline">Stansted</a>
+            </li>
+            <li>
+              <a href="#" class="button button--outline">Luton</a>
+            </li>
+            <li>
+              <a href="#" class="button button--outline">Heathrow</a>
+            </li>
+            <li>
+              <a href="#" class="button button--outline">Birmingham</a>
+            </li>
+            <li>
+              <a href="#" class="button button--outline">Glasgow</a>
+            </li>
+            <li>
+              <a href="#" class="button button--outline">Edinburgh</a>
+            </li>
+            <li>
+              <a href="#" class="button button--outline">Liverpool</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </section>
+
+  <footer class="background--dark-grey footer">
+    <div class="container">
+      <div class="row">
+        <div class="[ text--center text--white small ] [ pb--3 pt--3 ] col-md-12">
+          <div class="mb--3">
+            <svg width="198px" height="21px" viewBox="0 0 198 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <desc>OneStepBooking.com</desc>
+              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="onestepbooking-logo--white" fill-rule="nonzero" fill="#FFFFFF">
+                  <path d="M13.5894595,14.3395946 C12.0652252,15.8278829 10.1815315,16.572027 7.93837838,16.572027 C5.69522523,16.572027 3.81184685,15.8278829 2.28824324,14.3395946 C0.762747748,12.8513063 0,10.9966216 0,8.77554054 C0,6.55445946 0.762117117,4.69945946 2.28635135,3.21054054 C3.81058559,1.72225225 5.69427928,0.978423423 7.93743243,0.979054054 C10.1805856,0.979684685 12.0645946,1.72351351 13.5894595,3.21054054 C15.1130631,4.69882883 15.8751802,6.55351351 15.8758108,8.77459459 C15.8764414,10.9956757 15.1143243,12.8506757 13.5894595,14.3395946 Z M11.7221622,4.90378378 C10.6942342,3.83990991 9.43297297,3.30797297 7.93837838,3.30797297 C6.44378378,3.30797297 5.18252252,3.83990991 4.15459459,4.90378378 C3.12666667,5.96828829 2.6127027,7.25887387 2.6127027,8.77554054 C2.6127027,10.2922072 3.12666667,11.5827928 4.15459459,12.6472973 C5.18252252,13.7118018 6.44378378,14.2437387 7.93837838,14.2431081 C9.43297297,14.2424775 10.6942342,13.7105405 11.7221622,12.6472973 C12.7500901,11.5834234 13.2640541,10.2928378 13.2640541,8.77554054 C13.2640541,7.25824324 12.7500901,5.96765766 11.7221622,4.90378378 Z"
+                    id="Shape"></path>
+                  <path d="M19.3247297,10.2095946 L19.3247297,16.4206757 L16.9087838,16.4206757 L16.9087838,4.94256757 L19.3247297,4.94256757 L19.3247297,7.03878378 C20.0878353,5.64245676 21.552269,4.77402616 23.1435135,4.77418919 C24.4375676,4.77418919 25.4834685,5.16959459 26.2812162,5.96040541 C27.078964,6.75121622 27.4775225,7.89391892 27.4768919,9.38851351 L27.4768919,16.4197297 L25.0618919,16.4197297 L25.0618919,10.1235135 C25.0618919,8.00963964 24.1846847,6.9527027 22.4302703,6.9527027 C21.6257819,6.94261291 20.8477136,7.23963202 20.2545946,7.78324324 C19.6346847,8.33693694 19.3247297,9.14572072 19.3247297,10.2095946 Z"
+                    id="Shape"></path>
+                  <path d="M39.7921622,11.7410811 L30.7990541,11.7410811 C30.8564414,12.5747748 31.2373423,13.247027 31.9417568,13.7578378 C32.6431992,14.2673317 33.4908442,14.5358301 34.3577027,14.5231081 C35.7955405,14.5231081 36.8884234,14.0703153 37.6363514,13.1647297 L39.0164865,14.6782432 C37.7798198,15.9584234 36.1695045,16.5981982 34.1855405,16.5975676 C32.5749099,16.5975676 31.2054955,16.0615315 30.0772973,14.9894595 C28.9490991,13.9173874 28.3846847,12.4795495 28.3840541,10.6759459 C28.3840541,8.87171171 28.9591892,7.43734234 30.1094595,6.37283784 C31.2048734,5.3300975 32.6647932,4.75733362 34.177027,4.77702703 C35.7372072,4.77702703 37.0637387,5.24810811 38.1566216,6.19027027 C39.2495045,7.13243243 39.7946847,8.42900901 39.7921622,10.08 L39.7921622,11.7410811 Z M30.7990541,9.84256757 L37.3771622,9.84256757 C37.3771622,8.87959459 37.0750901,8.13923423 36.4709459,7.62148649 C35.8668018,7.10373874 35.1226577,6.84486486 34.2385135,6.84486486 C33.3756826,6.8375843 32.5358056,7.12265568 31.8556757,7.65364865 C31.1506306,8.19283784 30.7984234,8.92247748 30.7990541,9.84256757 Z"
+                    id="Shape"></path>
+                  <path d="M46.4885135,3.32972973 C45.7475225,3.32972973 45.1399099,3.48076577 44.6656757,3.78283784 C44.1914414,4.08490991 43.9543243,4.54117117 43.9543243,5.15162162 C43.9543243,5.7627027 44.1917568,6.23 44.6666216,6.55351351 C45.1414865,6.87702703 46.1504955,7.22576577 47.6936486,7.59972973 C49.2412162,7.97243243 50.4069369,8.49711712 51.1908108,9.17378378 C51.9746847,9.85045045 52.3666216,10.8462162 52.3666216,12.1610811 C52.3666216,13.4765766 51.8706306,14.5442342 50.8786486,15.3640541 C49.8866667,16.1838739 48.5853604,16.5937838 46.9747297,16.5937838 C44.6168018,16.5937838 42.5246847,15.7812162 40.6983784,14.1560811 L42.2941892,12.2367568 C43.8177928,13.5610811 45.3994144,14.2232432 47.0390541,14.2232432 C47.8588739,14.2232432 48.5093694,14.046982 48.9905405,13.6944595 C49.4531466,13.3795641 49.7250892,12.8520522 49.7132432,12.2925676 C49.7132432,11.7104955 49.4868468,11.2573874 49.0340541,10.9332432 C48.5812613,10.6090991 47.8024324,10.3149099 46.6975676,10.0506757 C45.5901802,9.78454955 44.7489189,9.54018018 44.1737838,9.31756757 C43.6198673,9.10764405 43.1021752,8.81241272 42.6394595,8.44256757 C41.7502703,7.7659009 41.3056757,6.73009009 41.3056757,5.33513514 C41.3056757,3.94018018 41.8101802,2.86527027 42.8191892,2.11040541 C43.8326126,1.35364865 45.0872523,0.97527027 46.5831081,0.97527027 C47.5584185,0.976938338 48.527012,1.13666682 49.4512162,1.44824324 C50.3476566,1.73593155 51.1819825,2.18967648 51.9106757,2.78581081 L50.5541892,4.70986486 C50.1083333,4.30752252 49.5045045,3.97675676 48.7427027,3.71756757 C48.0177437,3.46521826 47.256124,3.33418005 46.4885135,3.32972973 L46.4885135,3.32972973 Z"
+                    id="Shape"></path>
+                  <path d="M55.7304054,6.88837838 L55.7304054,12.7116216 C55.7304054,13.2583784 55.8741892,13.6931982 56.1617568,14.0160811 C56.4493243,14.338964 56.851982,14.5007207 57.3697297,14.5013514 C57.8874775,14.5013514 58.3834685,14.2490991 58.8577027,13.7445946 L59.85,15.4472973 C59.0011712,16.2097297 58.0627928,16.5906306 57.0348649,16.59 C56.0491537,16.6069589 55.0991395,16.2212825 54.4041892,15.522027 C53.6808559,14.8131982 53.3191892,13.8546396 53.3191892,12.6463514 L53.3191892,6.88837838 L51.87,6.88837838 L51.87,4.94256757 L53.3191892,4.94256757 L53.3191892,1.34797297 L55.7351351,1.34797297 L55.7351351,4.94256757 L58.7545946,4.94256757 L58.7545946,6.88837838 L55.7304054,6.88837838 Z"
+                    id="Shape"></path>
+                  <path d="M70.7198649,11.7410811 L61.7258108,11.7410811 C61.7831982,12.5747748 62.1640991,13.247027 62.8685135,13.7578378 C63.5699871,14.2672702 64.4176109,14.5357618 65.2844595,14.5231081 C66.7222973,14.5231081 67.8151802,14.0703153 68.5631081,13.1647297 L69.9432432,14.6782432 C68.7065766,15.9584234 67.0962613,16.5981982 65.1122973,16.5975676 C63.5016667,16.5975676 62.1322523,16.0615315 61.0040541,14.9894595 C59.8758559,13.9173874 59.3114414,12.4795495 59.3108108,10.6759459 C59.3108108,8.87171171 59.8859459,7.43734234 61.0362162,6.37283784 C62.1316301,5.3300975 63.5915499,4.75733362 65.1037838,4.77702703 C66.663964,4.77702703 67.9904955,5.24810811 69.0833784,6.19027027 C70.1762613,7.13243243 70.7227027,8.42995495 70.7227027,10.0828378 L70.7198649,11.7410811 Z M61.7258108,9.84256757 L68.3039189,9.84256757 C68.3039189,8.87959459 68.0018468,8.13923423 67.3977027,7.62148649 C66.7935586,7.10373874 66.0494144,6.84486486 65.1652703,6.84486486 C64.3011574,6.83680184 63.4598329,7.1219118 62.7786486,7.65364865 C62.0767568,8.19283784 61.7258108,8.92247748 61.7258108,9.84256757 Z"
+                    id="Shape"></path>
+                  <path d="M77.7936486,4.77418919 C79.3323874,4.77418919 80.6478829,5.30612613 81.7401351,6.37 C82.8323874,7.43387387 83.3791441,8.84995495 83.3804054,10.6182432 C83.3804054,12.384009 82.8377477,13.8218468 81.7524324,14.9317568 C80.6671171,16.0416667 79.4017568,16.5953604 77.9563514,16.5928378 C76.5109459,16.5928378 75.2134234,15.9603153 74.0637838,14.6952703 L74.0637838,20.6045946 L71.6468919,20.6045946 L71.6468919,4.94256757 L74.0628378,4.94256757 L74.0628378,6.9527027 C75.0119369,5.50036036 76.2555405,4.77418919 77.7936486,4.77418919 Z M74.0193243,10.7052703 C74.0193243,11.7981532 74.3500901,12.693018 75.0116216,13.3898649 C75.6297634,14.068755 76.5095236,14.4497318 77.4275676,14.4360811 C78.3735135,14.4360811 79.2002703,14.0911261 79.9078378,13.4012162 C80.6154054,12.7113063 80.9676126,11.8151802 80.9644595,10.7128378 C80.9644595,9.61301802 80.6195045,8.6986036 79.9295946,7.96959459 C79.2396847,7.24058559 78.4126126,6.88018018 77.4483784,6.88837838 C76.5153226,6.87524731 75.6238816,7.27390413 75.0116216,7.97810811 C74.3500901,8.70396396 74.0193243,9.61301802 74.0193243,10.7052703 Z"
+                    id="Shape"></path>
+                  <path d="M91.5543243,16.4206757 L84.9544595,16.4206757 L84.9544595,1.34797297 L90.8193243,1.34797297 C91.8403153,1.34797297 92.720991,1.47031532 93.4613514,1.715 C94.2017117,1.95968468 94.7579279,2.2895045 95.13,2.70445946 C95.806036,3.48076577 96.1440541,4.35765766 96.1440541,5.33513514 C96.1440541,6.51441441 95.7631532,7.39162162 95.0013514,7.96675676 C94.8320316,8.10710183 94.6517233,8.23363401 94.4621622,8.34513514 C94.3612613,8.39558559 94.1815315,8.4781982 93.922973,8.59297297 C94.8575676,8.79414414 95.6017117,9.21477477 96.1554054,9.85486486 C96.7090991,10.494955 96.9859459,11.2892342 96.9859459,12.2377027 C96.9931926,13.2684087 96.6075961,14.26318 95.9075676,15.0197297 C95.0738739,15.9543243 93.6227928,16.4213063 91.5543243,16.4206757 Z M88.3191892,7.44932432 L89.915,7.44932432 C90.8495946,7.44932432 91.5432883,7.34873874 91.9960811,7.14756757 C92.4488739,6.9463964 92.6752703,6.51157658 92.6752703,5.84310811 C92.6752703,5.17463964 92.4668468,4.7331982 92.05,4.51878378 C91.6331532,4.30436937 90.9287387,4.19558559 89.9367568,4.19243243 L88.3191892,4.19243243 L88.3191892,7.44932432 Z M88.3191892,13.5743243 L90.6272973,13.5743243 C91.5902703,13.5743243 92.3126577,13.4557658 92.7944595,13.2186486 C93.2762613,12.9815315 93.5171622,12.5142342 93.5171622,11.8167568 C93.5171622,11.1192793 93.2620721,10.6592342 92.7518919,10.4366216 C92.2417117,10.214009 91.4263063,10.1023874 90.3056757,10.1017568 L88.3191892,10.1017568 L88.3191892,13.5743243 Z"
+                    id="Shape"></path>
+                  <path d="M109.79973,10.6182432 C109.79973,12.3001351 109.217342,13.7165315 108.052568,14.8674324 C106.887793,16.0183333 105.42473,16.5934685 103.663378,16.5928378 C101.902027,16.5928378 100.438964,16.0177027 99.2741892,14.8674324 C98.1094144,13.7171622 97.5273423,12.3007658 97.527973,10.6182432 C97.527973,8.93572072 98.1103604,7.5168018 99.2751351,6.36148649 C100.43991,5.20617117 101.902973,4.62756757 103.664324,4.62567568 C105.425676,4.62567568 106.888739,5.20427928 108.053514,6.36148649 C109.218288,7.51869369 109.80036,8.93761261 109.79973,10.6182432 Z M100.784865,10.6182432 C100.784865,11.5641892 101.054459,12.337027 101.593649,12.9367568 C102.132838,13.5364865 102.823063,13.8347748 103.664324,13.8316216 C104.505586,13.8316216 105.195811,13.5333333 105.735,12.9367568 C106.274189,12.3401802 106.543784,11.5673423 106.543784,10.6182432 C106.543784,9.6722973 106.274189,8.89567568 105.735,8.28837838 C105.195811,7.68108108 104.505586,7.37900901 103.664324,7.38216216 C102.823063,7.38216216 102.132838,7.68423423 101.593649,8.28837838 C101.054459,8.89252252 100.784865,9.66914414 100.784865,10.6182432 Z"
+                    id="Shape"></path>
+                  <path d="M122.502838,10.6182432 C122.502838,12.3001351 121.92045,13.7165315 120.755676,14.8674324 C119.590901,16.0183333 118.127838,16.5934685 116.366486,16.5928378 C114.605135,16.5928378 113.142072,16.0177027 111.977297,14.8674324 C110.812523,13.7171622 110.23045,12.3007658 110.231081,10.6182432 C110.231081,8.93572072 110.813468,7.5168018 111.978243,6.36148649 C113.143018,5.20617117 114.606081,4.62756757 116.367432,4.62567568 C118.128784,4.62567568 119.591847,5.20427928 120.756622,6.36148649 C121.921396,7.51869369 122.503468,8.93761261 122.502838,10.6182432 Z M113.487973,10.6182432 C113.487973,11.5641892 113.757568,12.337027 114.296757,12.9367568 C114.835946,13.5364865 115.526171,13.8347748 116.367432,13.8316216 C117.208694,13.8316216 117.898919,13.5333333 118.438108,12.9367568 C118.977297,12.3401802 119.246892,11.5673423 119.246892,10.6182432 C119.246892,9.6722973 118.977297,8.89567568 118.438108,8.28837838 C117.898919,7.68108108 117.208694,7.37900901 116.367432,7.38216216 C115.526171,7.38216216 114.835946,7.68423423 114.296757,8.28837838 C113.757568,8.89252252 113.487973,9.66914414 113.487973,10.6182432 Z"
+                    id="Shape"></path>
+                  <polygon id="Shape" points="126.406757 16.4206757 123.171622 16.4206757 123.171622 0.418108108 126.406757 0.418108108 126.406757 8.63175676 130.008919 4.79310811 134.085 4.79310811 129.663649 9.49445946 134.257162 16.4178378 130.413784 16.4178378 127.458649 11.9718919 126.406757 13.0777027"></polygon>
+                  <path d="M134.978919,3.34013514 C134.617531,2.98592094 134.41863,2.49808168 134.429324,1.99216216 C134.418743,1.48626363 134.617627,0.998467641 134.978919,0.644189189 C135.72797,-0.0891199617 136.925814,-0.0891199617 137.674865,0.644189189 C138.036253,0.998403387 138.235154,1.48624265 138.224459,1.99216216 C138.235268,2.49810268 138.036349,2.98598528 137.674865,3.34013514 C136.925814,4.07344429 135.72797,4.07344429 134.978919,3.34013514 L134.978919,3.34013514 Z M137.944459,16.4206757 L134.709324,16.4206757 L134.709324,4.8177027 L137.944459,4.8177027 L137.944459,16.4206757 Z"
+                    id="Shape"></path>
+                  <path d="M142.085811,9.95040541 L142.085811,16.4206757 L138.850676,16.4206757 L138.850676,4.8177027 L142.085811,4.8177027 L142.085811,6.11175676 C143.063288,5.11977477 144.163108,4.62378378 145.38527,4.62378378 C146.607432,4.62378378 147.631892,5.05513514 148.458649,5.91783784 C149.285405,6.78054054 149.698784,7.93081081 149.698784,9.36864865 L149.698784,16.4216216 L146.463649,16.4216216 L146.463649,9.86148649 C146.463649,8.07869369 145.809369,7.1872973 144.500811,7.1872973 C143.864896,7.18268837 143.254159,7.43551285 142.807568,7.88824324 C142.325766,8.35743243 142.08518,9.04481982 142.085811,9.95040541 Z"
+                    id="Shape"></path>
+                  <path d="M159.49027,14.4587838 C158.469279,15.5939189 157.20045,16.1614865 155.683784,16.1614865 C154.167117,16.1614865 152.887568,15.6475225 151.845135,14.6195946 C150.800811,13.5916667 150.278649,12.2187838 150.278649,10.5009459 C150.278649,8.78310811 150.814685,7.37396396 151.886757,6.27351351 C152.958829,5.17369369 154.184775,4.62378378 155.564595,4.62378378 C156.944414,4.62378378 158.087432,5.19135135 158.993649,6.32648649 L158.993649,4.79594595 L162.228784,4.79594595 L162.228784,14.9109459 C162.228784,15.9464414 162.049054,16.8665315 161.689595,17.6712162 C161.330135,18.4759009 160.848333,19.1084234 160.244189,19.5687838 C159.050405,20.5147297 157.641261,20.9877027 156.016757,20.9877027 C155.119824,20.982253 154.228946,20.8403121 153.37473,20.5667568 C152.521913,20.3107897 151.721233,19.9056457 151.009865,19.3701351 L152.265135,16.9381081 C153.329009,17.7434234 154.454054,18.1460811 155.64027,18.1460811 C156.826486,18.1460811 157.76455,17.8512613 158.454459,17.2616216 C159.145,16.671982 159.49027,15.7377027 159.49027,14.4587838 Z M159.037162,10.3713514 C159.037162,9.44432432 158.778288,8.71468468 158.260541,8.18243243 C157.761598,7.65810626 157.064827,7.36827155 156.341216,7.38405405 C155.602981,7.3745954 154.89193,7.66228803 154.367973,8.18243243 C153.814279,8.71468468 153.537432,9.43990991 153.537432,10.3581081 C153.537432,11.2763063 153.807027,12.0204505 154.346216,12.5905405 C154.851763,13.1437148 155.570166,13.4536684 156.319459,13.4418919 C157.058215,13.4583277 157.76727,13.1511398 158.260541,12.6009459 C158.778919,12.0415766 159.037793,11.2983784 159.037162,10.3713514 L159.037162,10.3713514 Z"
+                    id="Shape"></path>
+                  <path d="M163.202162,16.2343243 C163.015538,16.0470923 162.913094,15.7920067 162.918378,15.5277027 C162.916102,15.2660768 163.018637,15.014424 163.203107,14.8288872 C163.387578,14.6433504 163.638636,14.5393669 163.90027,14.5401351 C164.164534,14.5350692 164.419537,14.6374801 164.606892,14.8239189 C164.798061,15.0060931 164.904378,15.2598831 164.900135,15.5239189 C164.900637,15.7896015 164.795577,16.0446018 164.608066,16.2328226 C164.420555,16.4210433 164.165953,16.5270663 163.90027,16.5275676 C163.636889,16.5312805 163.383887,16.4250061 163.202162,16.2343243 L163.202162,16.2343243 Z"
+                    id="Shape"></path>
+                  <path d="M168.664054,16.5275676 C167.715129,16.5426623 166.798972,16.1806903 166.116622,15.5210811 C165.40527,14.8500901 165.049595,13.9719369 165.049595,12.8866216 C165.049595,11.8013063 165.420721,10.9184234 166.162973,10.237973 C166.905225,9.55752252 167.809865,9.2172973 168.876892,9.2172973 C169.893393,9.19677818 170.873171,9.59731634 171.584189,10.3240541 L170.703514,11.4043243 C170.08991,10.8708108 169.471892,10.6040541 168.849459,10.6040541 C168.249747,10.5955268 167.669668,10.8176703 167.229054,11.2245946 C166.774474,11.6301286 166.522977,12.2162607 166.542297,12.8251351 C166.537152,13.4497671 166.783859,14.0501348 167.226711,14.4906728 C167.669562,14.9312107 168.271214,15.1747691 168.895811,15.1663514 C169.557973,15.1663514 170.182613,14.863964 170.76973,14.2591892 L171.650405,15.2193243 C170.788964,16.0914865 169.793514,16.5275676 168.664054,16.5275676 Z"
+                    id="Shape"></path>
+                  <path d="M178.184054,15.4671622 C177.472703,16.1740991 176.583514,16.5275676 175.516486,16.5275676 C174.449459,16.5275676 173.56027,16.1740991 172.848919,15.4671622 C172.14888,14.7879883 171.762414,13.8485459 171.781892,12.8733784 C171.762264,11.8979058 172.148734,10.9581138 172.848919,10.2786486 C173.56027,9.57171171 174.449459,9.21824324 175.516486,9.21824324 C176.583514,9.21824324 177.472703,9.57171171 178.184054,10.2786486 C178.884143,10.9581791 179.270594,11.8979272 179.251081,12.8733784 C179.270444,13.8485244 178.883996,14.7879229 178.184054,15.4671622 L178.184054,15.4671622 Z M173.909324,14.5467568 C174.807532,15.4102268 176.227333,15.4102268 177.125541,14.5467568 C177.547432,14.1154054 177.758694,13.5572973 177.759324,12.8724324 C177.759955,12.1875676 177.548694,11.6294595 177.125541,11.1981081 C176.22753,10.3341495 174.807335,10.3341495 173.909324,11.1981081 C173.486802,11.6294595 173.275541,12.1875676 173.275541,12.8724324 C173.275541,13.5572973 173.487748,14.1154054 173.912162,14.5467568 L173.909324,14.5467568 Z"
+                    id="Shape"></path>
+                  <path d="M181.641486,12.5791892 L181.641486,16.4206757 L180.147838,16.4206757 L180.147838,9.32608108 L181.641486,9.32608108 L181.641486,10.6182432 C181.851725,10.1854339 182.188985,9.82705326 182.608243,9.59094595 C183.031049,9.34431564 183.512145,9.21530503 184.001622,9.2172973 C185.122252,9.2172973 185.882477,9.67954955 186.282297,10.6040541 C186.98482,9.67954955 187.860766,9.2172973 188.910135,9.2172973 C189.710405,9.2172973 190.357432,9.46198198 190.851216,9.95135135 C191.345,10.4407207 191.591892,11.1476577 191.591892,12.0721622 L191.591892,16.4235135 L190.098243,16.4235135 L190.098243,12.5262162 C190.098243,11.2189189 189.555901,10.5652703 188.471216,10.5652703 C187.984818,10.5588715 187.513196,10.732361 187.146892,11.0524324 C186.768514,11.3772072 186.570495,11.8501802 186.552838,12.4713514 L186.552838,16.4197297 L185.059189,16.4197297 L185.059189,12.5262162 C185.059189,11.8508108 184.939054,11.3551351 184.698784,11.0391892 C184.458514,10.7232432 184.080135,10.5655856 183.563649,10.5662162 C183.065589,10.5595156 182.583766,10.7432444 182.216622,11.0798649 C181.833198,11.4216667 181.641486,11.9214414 181.641486,12.5791892 Z"
+                    id="Shape"></path>
+                  <path d="M197.589189,3.33445946 C197.738018,3.51040541 197.758198,3.76045045 197.64973,4.08459459 C197.538108,4.41397964 197.350475,4.71244332 197.102027,4.95581081 L196.286622,5.77216216 L197.097297,9.29391892 C197.114633,9.35691971 197.090376,9.42400646 197.036757,9.46135135 L196.387838,9.94756757 C196.360942,9.9686482 196.327381,9.97938799 196.293243,9.97783784 C196.281396,9.97819544 196.269571,9.97659744 196.258243,9.97310811 C196.211363,9.96583898 196.171423,9.93517105 196.152297,9.89175676 L194.738108,7.31783784 L193.423243,8.63175676 L193.691892,9.61459459 C193.709186,9.6704158 193.693436,9.73121679 193.651216,9.77162162 L193.165,10.2578378 C193.134163,10.2884094 193.092042,10.3048466 193.048649,10.3032432 L193.035405,10.3032432 C192.987566,10.2982023 192.94368,10.2743882 192.913378,10.237027 L191.956081,8.96 L190.679054,8.0027027 C190.640097,7.97631947 190.615625,7.93331914 190.612838,7.88635135 C190.610356,7.83971883 190.626717,7.79404489 190.658243,7.75959459 L191.144459,7.2677027 C191.175297,7.2371311 191.217417,7.2206939 191.260811,7.2222973 C191.274547,7.22123776 191.288359,7.22284381 191.301486,7.22702703 L192.288108,7.49662162 L193.602973,6.1827027 L191.029054,4.76851351 C190.983005,4.74337096 190.951212,4.69830181 190.942973,4.64648649 C190.934926,4.59610434 190.951859,4.5449535 190.988378,4.50932432 L191.637297,3.86040541 C191.675962,3.81859661 191.735233,3.80276649 191.789595,3.81972973 L195.16,4.62567568 L195.970676,3.815 C196.214043,3.56655248 196.512507,3.37891896 196.841892,3.2672973 C197.164144,3.16009009 197.413243,3.18247748 197.589189,3.33445946 Z"
+                    id="Shape"></path>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <ul class="list--none list--inline">
+            <li>
+              <a href="#" class="text--white">Airlines</a>
+            </li>
+            <li>
+              <a href="#" class="text--white">Airports</a>
+            </li>
+            <li>
+              <a href="#" class="text--white">Cheap flights</a>
+            </li>
+            <li>
+              <a href="#" class="text--white">Extras</a>
+            </li>
+            <li>
+              <a href="#" class="text--white">About Us</a>
+            </li>
+            <li>
+              <a href="#" class="text--white">Contact Us</a>
+            </li>
+            <li>
+              <a href="#" class="text--white">Booking Conditions</a>
+            </li>
+            <li>
+              <a href="#" class="text--white">Site Map</a>
+            </li>
+            <li>
+              <a href="#" class="text--white">FAQs</a>
+            </li>
+            <li>
+              <a href="#" class="text--white">RSS</a>
+            </li>
+            <li>
+              <a href="#" class="text--white">Privacy Policy</a>
+            </li>
+          </ul>
+          <p>OneStepBooking.com is a trading name of BF Aviation Ltd, a limited company incorporated in England and Wales under registration number 08615973, whose registered office is at 16 Beaufort Court, Admirals Way, Docklands, London, E14 9XL.</p>
+          <div class="copyright">
+            © OneStepBooking.com All Rights Reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    // Slick slider - Used for logo slider
+    $('.regular').slick({
+      arrows: false,
+      centerMode: true,
+      centerPadding: '54px',
+      autoplay: true,
+      autoplaySpeed: 2000,
+      slidesToShow: 6,
+      responsive: [{
+          breakpoint: 480,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '54px',
+            slidesToShow: 2
+          }
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '54px',
+            slidesToShow: 4
+          }
+        }
+      ]
+    });
+  </script>
+
+  <script type="text/javascript">
+    $(function() {
+      $('input[name="daterange"]').daterangepicker({
+        locale: {
+          format: 'MM/DD/YYYY'
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>

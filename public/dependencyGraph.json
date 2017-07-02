@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "timestamp": 1498964288090,
+  "graph": {
+    "options": {
+      "directed": true,
+      "multigraph": false,
+      "compound": false
+    },
+    "nodes": [
+      {
+        "v": "01-templates/01-homepage.mustache",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "/Users/luis/Documents/Development/osb-styleguide/edition-node-gulp/source/_meta/_00-head.mustache",
+        "value": {
+          "compileState": null
+        }
+      },
+      {
+        "v": "/Users/luis/Documents/Development/osb-styleguide/edition-node-gulp/source/_meta/_01-foot.mustache",
+        "value": {
+          "compileState": null
+        }
+      }
+    ],
+    "edges": []
+  }
+}
