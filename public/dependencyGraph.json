@@ -15,6 +15,12 @@
         }
       },
       {
+        "v": "02-templates/02-search-results.mustache",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
         "v": "/Users/luis/Documents/Development/osb-styleguide/edition-node-gulp/source/_meta/_00-head.mustache",
         "value": {
           "compileState": null
