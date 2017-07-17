@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 14 14">
+  <defs>
+    <circle id="onestepbooking__asset--user-a" cx="7" cy="4" r="4"/>
+    <path id="onestepbooking__asset--user-b" d="M7,7 L7,7 L7,7 C10.8659932,7 14,10.1340068 14,14 L14,14 L0,14 L0,14 L0,14 C-4.73447626e-16,10.1340068 3.13400675,7 7,7 Z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <use fill="#4D4D4D" xlink:href="#onestepbooking__asset--user-a"/>
+    <circle cx="7" cy="4" r="3" stroke="#4D4D4D" stroke-width="2"/>
+    <g>
+      <use fill="#4D4D4D" xlink:href="#onestepbooking__asset--user-b"/>
+      <path stroke="#4D4D4D" stroke-width="2" d="M1.08295844,13 L12.9170416,13 C12.4409635,10.1622867 9.97299624,8 7,8 C4.02700373,8 1.55903654,10.1622867 1.08295844,13 Z"/>
+    </g>
+  </g>
+</svg>
