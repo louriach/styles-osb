@@ -35,18 +35,7 @@
     <link rel="icon" href="">
     <meta name="author" content="">
     <title>OneStepBooking.com</title>
-    <link href="css/search-results.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- Checkbox toggle switch -->
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-    <!-- Include Bootstrap Datepicker -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
-    <!-- Montserrat font -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i" rel="stylesheet">
+    <link href="css/global.css" rel="stylesheet">
     <style>
       .text--white {
         color: #fff;
@@ -137,18 +126,12 @@
       }
 
       strong,
-      .bold,
-      .table--padded th,
-      .table--padded .th {
+      .bold {
         font-weight: bold;
       }
 
       small,
-      .small,
-      .table--padded th,
-      .table--padded .th,
-      .table--padded td,
-      .table--padded .td {
+      .small {
         font-size: .8em;
       }
 
@@ -398,7 +381,7 @@
 
       body {
         font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: calc(18px*.8);
+        font-size: calc(9px*1.5);
         line-height: 1.5;
         color: #4B4B4B;
         background-color: #fff;
@@ -422,17 +405,32 @@
       a {
         color: #005F9E;
         text-decoration: none;
+        position: relative;
+      }
+
+      a:not(.collapse--toggle):before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        border-bottom: 2px solid;
+        transition: .3s;
       }
 
       a:hover,
       a:focus {
         color: #005F9E;
-        text-decoration: underline;
+      }
+
+      a:hover:before {
+        width: 100%;
       }
 
       a:focus {
         outline: 5px auto -webkit-focus-ring-color;
         outline-offset: -2px;
+        text-decoration: underline;
       }
 
       figure {
@@ -1419,6 +1417,37 @@
         }
       }
 
+      .visible-lg,
+      .visible-md,
+      .visible-sm,
+      .visible-xs {
+        display: none !important;
+      }
+
+      @media (max-width: 767px) {
+        .visible-xs {
+          display: block !important;
+        }
+      }
+
+      @media (min-width: 768px) and (max-width: 991px) {
+        .visible-sm {
+          display: block !important;
+        }
+      }
+
+      @media (min-width: 992px) and (max-width: 1199px) {
+        .visible-md {
+          display: block !important;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .visible-lg {
+          display: block !important;
+        }
+      }
+
       .sr-only {
         position: absolute;
         width: 1px;
@@ -1528,8 +1557,7 @@
       }
       /* Positioning */
 
-      .absolute,
-      .stub {
+      .absolute {
         position: absolute !important;
       }
 
@@ -1539,6 +1567,12 @@
 
       .relative {
         position: relative;
+      }
+
+      .centered {
+        left: 50%;
+        transform: translate(-50%, -50%);
+        top: 50%;
       }
 
       .d--block {
@@ -1582,7 +1616,7 @@
       /* Margins */
 
       .m--0 {
-        margin: 0;
+        margin: 0 !important;
       }
 
       .m--1 {
@@ -1753,7 +1787,7 @@
       /* Padding */
 
       .p--0 {
-        padding: 0;
+        padding: 0 !important;
       }
 
       .p--1 {
@@ -1800,16 +1834,12 @@
         }
       }
 
-      .pb--2,
-      .search-result,
-      .search-result--price {
+      .pb--2 {
         padding-bottom: 9px;
       }
 
       @media all and (min-width: 768px) {
-        .pb--2,
-        .search-result,
-        .search-result--price {
+        .pb--2 {
           padding-bottom: 18px;
         }
       }
@@ -1838,16 +1868,12 @@
         }
       }
 
-      .pt--2,
-      .search-result,
-      .search-result--price {
+      .pt--2 {
         padding-top: 9px;
       }
 
       @media all and (min-width: 768px) {
-        .pt--2,
-        .search-result,
-        .search-result--price {
+        .pt--2 {
           padding-top: 18px;
         }
       }
@@ -2038,6 +2064,130 @@
         display: block;
       }
 
+      @media all and (min-width: 1024px) {
+        .dd-container {
+          font-size: .8rem;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+      }
+
+      .dd-select {
+        cursor: pointer;
+        height: calc(18px*4);
+        position: relative;
+        padding: calc(18px*1.5) 18px calc(18px*1.5) 9px;
+      }
+
+      .dd-select a:focus,
+      .dd-select a:hover {
+        text-decoration: none;
+      }
+
+      @media all and (min-width: 1024px) {
+        .dd-select a:focus,
+        .dd-select a:hover {
+          color: #fff;
+        }
+      }
+
+      .dd-desc {
+        display: block;
+        overflow: hidden;
+      }
+
+      .dd-selected {
+        display: block;
+      }
+
+      @media all and (min-width: 1024px) {
+        .dd-selected {
+          color: #fff;
+        }
+      }
+
+      .dd-pointer {
+        width: 0;
+        height: 0;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin-top: -2px;
+      }
+
+      .dd-pointer-down {
+        border: solid 5px transparent;
+        border-top: solid 5px #005F9E;
+      }
+
+      @media all and (min-width: 1024px) {
+        .dd-pointer-down {
+          border-top-color: #fff;
+        }
+      }
+
+      .dd-pointer-up {
+        border: solid 5px transparent;
+        border-bottom: solid 5px #005F9E;
+        margin-top: -8px;
+      }
+
+      @media all and (min-width: 1024px) {
+        .dd-pointer-up {
+          border-bottom-color: #fff;
+        }
+      }
+
+      .dd-options {
+        background-color: #fff;
+        background: linear-gradient(to bottom, white 85%, #cbcbcb 100%);
+        box-shadow: 0 18px 36px 0 rgba(0, 0, 0, 0.36);
+        display: none;
+        height: 100px;
+        list-style: none;
+        margin-left: -9px;
+        margin-top: -18px;
+        position: absolute;
+        overflow: scroll;
+        width: 75px;
+        z-index: 1;
+      }
+
+      @media all and (min-width: 768px) {
+        .dd-options {
+          height: 120px;
+          width: 90px;
+        }
+      }
+
+      @media all and (min-width: 1024px) {
+        .dd-options {
+          height: 100px;
+        }
+      }
+
+      .dd-option,
+      .dd-option:hover {
+        color: #4B4B4B;
+      }
+
+      .dd-option {
+        display: block;
+        line-height: 1.5;
+        padding: 9px;
+        transition: all .3s ease-in-out;
+      }
+
+      .dd-options>li:last-child>.dd-option {
+        border-bottom: none;
+      }
+
+      .dd-option:hover {
+        opacity: .5;
+        text-decoration: none;
+      }
+
       .navbar {
         left: 0;
         position: absolute;
@@ -2056,15 +2206,16 @@
       .header--trim {
         /*background-color: rgba($blue, .75);*/
         background-color: #005F9E;
-        padding-top: calc(18px*5);
+        padding: calc(18px*5) 0 18px;
+        margin-bottom: calc(18px*2);
+        text-align: center;
       }
-
-      .cover {
-        background: url("https://images.unsplash.com/photo-1475503572774-15a45e5d60b9") no-repeat 0 0;
-        background-size: cover;
-        left: 0;
-        position: absolute;
-      }
+      /*.cover {
+  background: url("https://images.unsplash.com/photo-1475503572774-15a45e5d60b9") no-repeat 0 0;
+  background-size: cover;
+  left: 0;
+  position: absolute;
+}*/
 
       @media only screen and (max-width: 1023px) {
         .menu-list .dropdown-menu {
@@ -2103,8 +2254,8 @@
         .nav__item {
           border-top: 1px solid #CBCBCB;
           display: block;
-          margin-top: 18px;
-          padding-top: 18px;
+          margin-top: 9px;
+          padding-top: 9px;
         }
       }
 
@@ -2113,7 +2264,7 @@
           color: #fff;
           font-size: .8rem;
           line-height: calc(18px*4);
-          padding-left: calc(18px*2);
+          margin-left: calc(18px*2);
         }
         .nav__item:hover,
         .nav__item:focus {
@@ -2121,27 +2272,52 @@
         }
       }
 
-      .navbar-brand {
-        background: url("https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--blue.svg") 0 0 no-repeat transparent;
-        height: 21px;
-        left: 18px;
-        position: absolute;
-        text-indent: -9999px;
-        top: 18px;
-        width: 198px;
-      }
-
-      @media all and (min-width: 1024px) {
-        .navbar-brand {
-          background-image: url("https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--white.svg");
-          left: calc(9px*3);
-          top: 25px;
+      @media all and (max-width: 1023px) {
+        .navbar-header {
+          align-items: center;
+          height: calc(18px*3);
+          display: flex;
+          justify-content: space-between;
         }
       }
 
+      .navbar-brand {
+        position: relative;
+      }
+
       @media all and (max-width: 1023px) {
-        .navbar-header {
-          height: calc(18px*3);
+        .navbar-brand {
+          display: flex;
+          align-items: center;
+          height: 100%;
+        }
+      }
+
+      .navbar-brand .logo {
+        background: url("https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--blue.svg") 0 0 no-repeat transparent;
+        background-size: contain;
+        height: 16px;
+        text-indent: -9999px;
+      }
+
+      @media all and (min-width: 768px) {
+        .navbar-brand .logo {
+          height: 21px;
+        }
+      }
+
+      @media all and (min-width: 1024px) {
+        .navbar-brand .logo {
+          left: 0;
+          position: absolute;
+          top: calc(18px*1.5);
+          width: 191px;
+        }
+      }
+
+      @media all and (min-width: 1024px) {
+        .navbar-brand .logo {
+          background-image: url("https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--white.svg");
         }
       }
 
@@ -2159,7 +2335,7 @@
         .navbar-collapse.collapse {
           display: block !important;
           height: auto !important;
-          padding-bottom: 0;
+          padding: 0 calc(18px*6) 0 0;
           overflow: visible !important;
           text-align: right;
         }
@@ -2170,9 +2346,6 @@
 
       .navbar-toggle {
         background-color: transparent;
-        position: absolute;
-        right: 18px;
-        top: 9px;
       }
 
       .navbar-toggle:after {
@@ -2220,6 +2393,80 @@
       .collapse.in {
         display: block;
       }
+      /* Modified version of Awesomeplete autocomplete plugin http://leaverou.github.io/awesomplete/ */
+
+      .awesomplete [hidden] {
+        display: none;
+      }
+
+      .awesomplete .visually-hidden {
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+      }
+
+      .awesomplete {
+        position: relative;
+      }
+
+      .awesomplete>input {
+        display: block;
+      }
+
+      .awesomplete>ul {
+        position: absolute;
+        left: 0;
+        z-index: 2;
+        min-width: 100%;
+        list-style: none;
+        top: calc(18px*2);
+        border-radius: 3px;
+        background-color: #fff;
+        border: 1px solid #CBCBCB;
+      }
+
+      .awesomplete>ul:empty {
+        display: none;
+      }
+
+      .awesomplete>ul[hidden],
+      .awesomplete>ul:empty {
+        opacity: 0;
+        transform: scale(0);
+        display: block;
+        transition-timing-function: ease;
+      }
+      /* Pointer */
+
+      .awesomplete>ul:before {
+        content: "";
+        position: absolute;
+        top: -.43em;
+        left: 1em;
+        width: 0;
+        height: 0;
+        padding: .4em;
+        background: white;
+        border: inherit;
+        border-right: 0;
+        border-bottom: 0;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+
+      .awesomplete li {
+        padding: 9px;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .awesomplete li:hover {
+        color: #00A843;
+      }
+
+      .awesomplete mark {
+        background: #f5e79e;
+      }
+      /*# sourceMappingURL=awesomplete.css.map */
 
       input,
       select,
@@ -2255,13 +2502,24 @@
       input[type=tel]:focus,
       input[type=date]:focus,
       select:focus {
+        outline: none;
+      }
+
+      .input--focus:focus {
         box-shadow: 0 18px 36px 0 rgba(0, 0, 0, 0.36);
       }
 
       .button {
         border: 2px solid transparent;
         height: calc(18px*2);
+        line-height: 2;
         padding: .3rem .5rem;
+      }
+
+      @media all and (min-width: 768px) {
+        .button {
+          line-height: 1.3;
+        }
       }
 
       .button:hover {
@@ -2355,27 +2613,76 @@
         border: 1px solid #86730e;
       }
 
+      @media all and (max-width: 414px) {
+        .search-form--lg [class*="col-"] {
+          padding: 0 calc(9px/2);
+        }
+        .search-form--lg .search--departure,
+        .search-form--lg .search--return {
+          width: 39%;
+        }
+        .search-form--lg .search--return-check {
+          width: 22%;
+        }
+      }
+
+      .icon-wrap {
+        position: relative;
+      }
+
+      .icon-wrap:before {
+        background-color: transparent;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        content: "";
+        height: 18px;
+        left: 9px;
+        opacity: .5;
+        position: absolute;
+        top: 9px;
+        width: 18px;
+        z-index: 1;
+      }
+
+      .icon-wrap input[type=text],
+      .icon-wrap .button {
+        padding-left: calc(18px*2);
+      }
+
+      .icon-wrap--plane:before {
+        background-image: url(https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg);
+      }
+
+      .icon-wrap--calendar:before {
+        background-image: url(https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--calendar.svg);
+      }
+
+      .icon-wrap--user:before {
+        background-image: url(https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--user.svg);
+      }
+
       .form-wrap {
         padding: 0;
       }
 
       @media all and (min-width: 768px) {
-        .form-wrap:nth-child(odd) {
+        .form-wrap:nth-of-type(odd) {
           padding-left: 0;
           padding-right: 9px;
         }
-        .form-wrap:nth-child(even) {
+        .form-wrap:nth-of-type(even) {
           padding-left: 9px;
           padding-right: 0;
         }
       }
       /* Return date switcher */
 
-      .date-return {
+      .search--return {
         transition: all ease .3s;
       }
 
-      .date-return.inactive {
+      .search--return.inactive {
         opacity: .5;
       }
       /* Checkbox sliders */
@@ -2393,7 +2700,7 @@
       }
 
       .onoffswitch-label {
-        border-radius: calc(18px*2);
+        border-radius: 3px;
         cursor: pointer;
         display: block;
         line-height: calc(18px*2);
@@ -2432,13 +2739,12 @@
       .onoffswitch-inner.input--border:before,
       .onoffswitch-inner.input--border:after {
         border: 1px solid #CBCBCB;
-        border-radius: 18px;
       }
 
       .onoffswitch-switch {
         background: #CBCBCB;
         bottom: 0;
-        border-radius: calc(18px*2);
+        border-radius: 18px;
         display: block;
         margin: 9px;
         position: absolute;
@@ -2461,372 +2767,48 @@
           padding-right: calc(18px*2);
         }
       }
+      /* Form dropdown toggle */
+
+      .form-dropdown--wrapper {
+        position: relative;
+      }
+
+      .form-dropdown--fields {
+        background-color: #fff;
+        border-radius: 3px;
+        box-shadow: 0 18px 36px 0 rgba(0, 0, 0, 0.36);
+        left: 0;
+        position: absolute;
+        top: calc(18px*2.5);
+        width: 100%;
+        z-index: 1;
+      }
 
       .footer a:hover {
         color: #fff;
       }
-
-      .table--padded th,
-      .table--padded .th,
-      .table--padded tr:nth-child(even),
-      .table--padded .tr:nth-child(even) {
-        background-color: #FBFBFB;
-      }
-
-      .table--padded th,
-      .table--padded .th,
-      .table--padded td,
-      .table--padded .td {
-        border: 1px solid #CBCBCB;
-        padding: 1rem;
-      }
-
-      .search {
-        background-color: #FBFBFB;
-      }
-
-      .search-result--wrapper {
-        overflow: hidden;
-      }
-
-      .search-result {
-        background-color: #fff;
-        border: 1px solid #CBCBCB;
-        border-radius: 3px;
-        color: #4B4B4B;
-        display: block;
-        float: left;
-        width: 100%;
-      }
-
-      .search-result .plane {
-        transition: all .3s ease-in-out;
-      }
-
-      .search-result:hover {
-        background-color: #FBFBFB;
-        color: #4B4B4B;
-      }
-
-      .search-result:hover .plane {
-        margin-right: -18px;
-      }
-
-      .search-result:hover .button {
-        background-color: #00752f;
-      }
-
-      @media all and (min-width: 767px) {
-        .search-result--single {
-          padding-top: calc(18px*1.5);
-        }
-      }
-
-      .airline-logo {
-        max-height: 18px;
-      }
-
-      @media all and (max-width: 767px) {
-        .airline-logo {
-          margin: 9px 0 18px;
-        }
-      }
-
-      .highlight {
-        background-color: #f5e79e;
-      }
-
-      .search-result--price {
-        margin: 18px 0 0;
-        right: 0;
-        top: 0;
-      }
-
-      @media all and (max-width: 768px) {
-        .search-result--price {
-          border-top: 1px dashed #CBCBCB;
-        }
-      }
-
-      @media all and (min-width: 768px) {
-        .search-result--price {
-          border-left: 1px dashed #CBCBCB;
-          margin-top: -18px;
-          margin-bottom: -9px;
-        }
-      }
-
-      @media all and (max-width: 767px) {
-        .search-result--price {
-          padding-top: 18px;
-        }
-      }
-
-      .stub {
-        background-color: #FBFBFB;
-        border: 1px solid #CBCBCB;
-        border-radius: 100%;
-        height: 9px;
-        top: calc(-9px/2);
-        width: 9px;
-      }
-
-      @media all and (min-width: 768px) {
-        .stub {
-          height: 18px;
-          top: auto;
-          width: 18px;
-        }
-      }
-
-      .stub--bottom {
-        right: calc(-9px/2);
-      }
-
-      @media all and (min-width: 768px) {
-        .stub--bottom {
-          bottom: -18px;
-          left: -9px;
-        }
-      }
-
-      .stub--middle {
-        border-style: dashed;
-        left: 50%;
-        margin-left: calc(-9px/2);
-      }
-
-      @media all and (min-width: 768px) {
-        .stub--middle {
-          left: calc(-9px/2);
-          margin-top: calc(-9px/2);
-          top: 50%;
-        }
-      }
-
-      .stub--top {
-        left: calc(-9px/2);
-      }
-
-      @media all and (min-width: 768px) {
-        .stub--top {
-          left: -9px;
-          top: -9px;
-        }
-      }
-
-      @media all and (max-width: 767px) {
-        .search-result--currency {
-          margin-right: 9px;
-        }
-      }
-
-      @media all and (min-width: 768px) {
-        .search-result--currency {
-          font-size: calc(18px*1.5);
-          display: block;
-        }
-      }
-      /*# sourceMappingURL=search-results.css.map */
+      /*# sourceMappingURL=global.css.map */
     </style>
-
   </head>
 
-  <body class="search">
-    <header class="header header--trim">
-      <nav class="[ relative z--1 ] navbar">
-        <div class="container">
-          <div class="navbar-header">
-            <div class="navbar-brand">
-              <a href="#" class="d--inline-block logo">
-                    OneStepBooking.com
-                  </a>
-              <div id="currency"></div>
-            </div>
-            <button type="button" class="[ button button--outline ] navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                  <span class="sr-only">Toggle navigation</span>
-              </button>
-          </div>
-          <div id="navbar" class="[ navbar-collapse collapse ]">
-            <ul class="list--none menu-list">
-              <li>
-                <a href="#" class="text--uppercase link__border link__border link__border nav__item">Our airlines</a>
-              </li>
-              <li>
-                <a href="#" class="text--uppercase link__border nav__item">Get in touch</a>
-              </li>
-              <li>
-                <a href="#" class="text--uppercase link__border link__border nav__item">About us</a>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="text--uppercase relative link__border nav__item dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                      Your booking
-                    </a>
-                <ul class="list--none [ dropdown-menu pull-right ] background--white">
-                  <li>
-                    <a href="#" class="text--uppercase [ pb--1 pt--1 ]">Action</a>
-                  </li>
-                  <li>
-                    <a href="#" class="text--uppercase [ pb--1 pt--1 ]">Another action</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text--white">
-            <h1 class="h2 mb--0 page-title">Contact us</h1>
-          </div>
-        </div>
-      </div>
-    </header>
-
-
-    <section class="mb--3">
-      <div class="container">
-        <div class="row">
-          <div class="[ col-md-9 col-md-push-3 ]">
-            <h2>Finding the best airline to get you to and from your dream destination</h2>
-            <p>
-              Air travel has changed immeasurable over the past two decades. There are now so many more considerations when choosing your airline, not least because of the rise of the no-frills carriers - a boom which was started by Ryanair, which was founded in 1985
-              but didn't really take off (if you excuse the pun) until the deregulation of the airline industry by the EU in 1992.
-            </p>
-            <p>
-              The Irish airline was quickly followed by the second most popular low cost airline, Easyjet, in 1995. The model of charging for extras was gradually adopted by other airlines with many of the traditional airlines such as British Airways now only offering
-              inclusive meals and baggage on long-haul flights.
-            </p>
-            <p>
-              The traditional charter airlines operated by travel companies such as Thomson and Thomas Cook also entered the budget airline market by offering flight only tickets and adopting the same chargeable extras which now extend to things like priority boarding.
-            </p>
-            <p>
-              Ryanair is now Europe's second largest airline group after Lufthansa, but the rest of the top ten of the world's biggest airlines is dominated by US carriers (the top 4) and China (3 of the 10), with the merged Air France-KLM company the only other one
-              to get a look-in, occupying eighth place below Ryanair in seventh.
-            </p>
-            <h2>Travel beyond Europe or within the UK</h2>
-            <p>
-              The biggest UK airline offering travel beyond short haul options is British Airways. This flagship carrier provides worldwide flights to far-flung countries such as New Zealand, Australia, the USA and the Caribbean.
-            </p>
-            <p>
-              Many UK airlines also offer some flights between destinations closer to home. Regional UK airports are connected by domestic flights which can be cheaper than travelling by rail or car. You can search for a wide range of great value flights, both international
-              and domestic, using this website's search facility.
-            </p>
-
-          </div>
-          <div class="sidebar-search [ col-md-3 col-md-pull-9 ]">
-            <form>
-              <fieldset>
-                <legend class="mb--2">Search for flights</legend>
-                <div class="mb--1 col-md-12 p--0">
-                  <label class="d--block mb--1 small" for="flight-from">Travelling from</label>
-                  <input type="text" id="flight-from" name="flight-from" placeholder="From" value="London (LGW)" class="input--border small w--100">
-                </div>
-                <div class="mb--1 col-md-12 p--0">
-                  <label class="d--block mb--1 small" for="flight-to">Travelling to</label>
-                  <input type="text" id="flight-to" name="flight-to" placeholder="To" value="Barcelona (BCN)" class="input--border small w--100">
-                </div>
-                <div class="[ col-xs-9 col-sm-9 col-md-8 ] mb--1 p--0 pr--1">
-                  <label class="d--block mb--1 small" for="flight-departure"><span class="hidden-xs">Date</span> Departing</label>
-                  <input type="text" id="flight-departure" name="daterange" placeholder="Date" value="08-09-2017" class="date-popout input--border small w--100">
-                </div>
-                <div class="[ col-xs-3 col-sm-3 col-md-4 ] mb--1 p--0 pl--1">
-                  <div class="mb--1 text--center small">Return?</div>
-                  <div class="onoffswitch">
-                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-                    <label class="onoffswitch-label small" for="myonoffswitch">
-                      <span class="onoffswitch-inner input--border"></span>
-                      <span class="onoffswitch-switch"></span>
-                  </label>
-                  </div>
-                </div>
-                <div class="mb--1 col-md-12 p--0 date-return">
-                  <label class="d--block mb--1 small" for="flight-return">Returning</label>
-                  <input type="text" id="flight-return" name="return-departure" placeholder="Date" value="2017-01-28" class="date-popout input--border small w--100">
-                </div>
-                <div class="mb--1 [ col-xs-6 col-sm-6 col-md-6 ] p--0 pr--1">
-                  <label class="d--block mb--1 small" for="flight-passengers">Adults</label>
-                  <select id="flight-passengers" name="return-passengers" placeholder="Passengers" value="" class="input--border small w--100">
-                <option value="one">1</option>
-                <option value="two">2</option>
-                <option value="three">3</option>
-                <option value="four">4</option>
-              </select>
-                </div>
-                <div class="[ col-xs-6 col-sm-6 col-md-6 ] mb--2 p--0 pl--1">
-                  <label class="d--block mb--1 small" for="flight-passenger-18">Under 18s</label>
-                  <select id="flight-passengers-18" name="flight-passengers-18" placeholder="Passengers" value="" class="input--border small w--100">
-                <option value="zero">0</option>
-                <option value="one">1</option>
-                <option value="two">2</option>
-                <option value="three">3</option>
-                <option value="four">4</option>
-              </select>
-                </div>
-                <div class="mb--3 col-md-12 p--0">
-                  <button class="[ button button--orange ] small w--100">Search for flights</button>
-                </div>
-              </fieldset>
-            </form>
-          </div>
-          <!-- amend search -->
-        </div>
+  <body class="background--blue">
+    <section class="vh--100 text--center">
+      <div class="col-md-5 background--white p--3 border-radius absolute centered">
+        <h2>One moment…</h2>
+        <p>
+          We’re obtaining your full flight details from our trusted partners.
+        </p>
+        <p>
+          This may take up to a minute.
+        </p>
+        <div class="divider"></div>
+        <p class="small">Not redirecting? <a href="#">View Flight Details</a></p>
       </div>
     </section>
-
-    <footer class="background--dark-grey footer">
-      <div class="container">
-        <div class="row">
-          <div class="[ text--center text--white small ] [ pb--3 pt--3 ] col-md-12">
-            <div class="mb--3">
-              <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--white.svg">
-            </div>
-            <ul class="list--none list--inline">
-              <li>
-                <a href="#" class="text--white">About Us</a>
-              </li>
-              <li>
-                <a href="#" class="text--white">Contact Us</a>
-              </li>
-              <li>
-                <a href="#" class="text--white">Booking Conditions</a>
-              </li>
-              <li>
-                <a href="#" class="text--white">Privacy Policy</a>
-              </li>
-            </ul>
-            <p>OneStepBooking.com is a trading name of BF Aviation Ltd, a limited company incorporated in England and Wales under registration number 08615973, whose registered office is at 16 Beaufort Court, Admirals Way, Docklands, London, E14 9XL.</p>
-            <div class="copyright">
-              © OneStepBooking.com All Rights Reserved.
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <script>
-      $(document).ready(function() {
-        $('.date-popout')
-          .datepicker({
-            autoclose: true,
-            format: 'dd/mm/yyyy'
-          })
-      });
-    </script>
-
-    <script>
-      $(document).ready(function() {
-        $('.onoffswitch-checkbox')
-          .click(function() {
-            $('.date-return').toggleClass('inactive');
-          })
-      });
-    </script>
-
   </body>
 
   </html>
+
   <!--DO NOT REMOVE-->
   <script type="text/json" id="sg-pattern-data-footer" class="sg-pattern-data">
     {
@@ -2843,8 +2825,8 @@
         "patternType": "templates"
       },
       "patternExtension": "mustache",
-      "patternName": "Content Page",
-      "patternPartial": "templates-content-page",
+      "patternName": "Loading",
+      "patternPartial": "templates-loading",
       "patternState": "",
       "patternEngineName": "mustache",
       "extraOutput": {}

@@ -7,7 +7,7 @@
   <link rel="icon" href="">
   <meta name="author" content="">
   <title>OneStepBooking.com</title>
-  <link href="css/search-results.css" rel="stylesheet">
+  <link href="css/landing.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- Logo slider -->
@@ -27,233 +27,6 @@
   <!-- Range slider -->
   <script type="text/javascript" src="https://refreshless.com/noUiSlider/distribute/nouislider.js?v=1000"></script>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i" rel="stylesheet">
-  <!-- Currency dropdown -->
-  <script>
-    (function(e) {
-      e.fn.ddslick = function(l) {
-        if (c[l]) {
-          return c[l].apply(this, Array.prototype.slice.call(arguments, 1))
-        } else {
-          if (typeof l === "object" || !l) {
-            return c.init.apply(this, arguments)
-          } else {
-            e.error("Method " + l + " does not exists.")
-          }
-        }
-      };
-      var c = {},
-        d = {
-          data: [],
-          keepJSONItemsOnTop: false,
-          selectText: "",
-          defaultSelectedIndex: null,
-          truncateDescription: true,
-          imagePosition: "left",
-          showSelectedHTML: true,
-          clickOffToClose: true,
-          onSelected: function() {}
-        },
-        i = '<div class="dd-select"><input class="dd-selected-value" type="hidden" /><a class="dd-selected"></a><span class="dd-pointer dd-pointer-down"></span></div>',
-        a = '<ul class="dd-options"></ul>'
-      c.init = function(l) {
-        var l = e.extend({}, d, l);
-        return this.each(function() {
-          var p = e(this),
-            q = p.data("ddslick");
-          if (!q) {
-            var n = [],
-              o = l.data;
-            p.find("option").each(function() {
-              var w = e(this),
-                v = w.data();
-              n.push({
-                text: e.trim(w.text()),
-                value: w.val(),
-                selected: w.is(":selected"),
-                description: v.description,
-                imageSrc: v.imagesrc
-              })
-            });
-            if (l.keepJSONItemsOnTop) {
-              e.merge(l.data, n)
-            } else {
-              l.data = e.merge(n, l.data)
-            }
-            var m = p,
-              s = e('<div id="' + p.attr("id") + '"></div>');
-            p.replaceWith(s);
-            p = s;
-            p.addClass("dd-container").append(i).append(a);
-            var n = p.find(".dd-select"),
-              u = p.find(".dd-options");
-            u.css({
-              width: l.width
-            });
-            n.css({
-              width: l.width,
-              background: l.background
-            });
-            p.css({
-              width: l.width
-            });
-            if (l.height != null) {
-              u.css({
-                height: l.height,
-                overflow: "auto"
-              })
-            }
-            e.each(l.data, function(v, w) {
-              if (w.selected) {
-                l.defaultSelectedIndex = v
-              }
-              u.append('<li><a class="dd-option">' + (w.value ? ' <input class="dd-option-value" type="hidden" value="' + w.value + '" />' : "") + (w.imageSrc ? ' <img class="dd-option-image' + (l.imagePosition == "right" ? " dd-image-right" : "") + '" src="' + w.imageSrc + '" />' : "") + (w.text ? ' <label class="dd-option-text">' + w.text + "</label>" : "") + (w.description ? ' <small class="dd-option-description dd-desc">' + w.description + "</small>" : "") + "</a></li>")
-            });
-            var t = {
-              settings: l,
-              original: m,
-              selectedIndex: -1,
-              selectedItem: null,
-              selectedData: null
-            };
-            p.data("ddslick", t);
-            if (l.selectText.length > 0 && l.defaultSelectedIndex == null) {
-              p.find(".dd-selected").html(l.selectText)
-            } else {
-              var r = (l.defaultSelectedIndex != null && l.defaultSelectedIndex >= 0 && l.defaultSelectedIndex < l.data.length) ? l.defaultSelectedIndex : 0;
-              j(p, r)
-            }
-            p.find(".dd-select").on("click.ddslick", function() {
-              f(p)
-            });
-            p.find(".dd-option").on("click.ddslick", function() {
-              j(p, e(this).closest("li").index())
-            });
-            if (l.clickOffToClose) {
-              u.addClass("dd-click-off-close");
-              p.on("click.ddslick", function(v) {
-                v.stopPropagation()
-              });
-              e("body").on("click", function() {
-                e(".dd-click-off-close").slideUp(50).siblings(".dd-select").find(".dd-pointer").removeClass("dd-pointer-up")
-              })
-            }
-          }
-        })
-      };
-      c.select = function(l) {
-        return this.each(function() {
-          if (l.index !== undefined) {
-            j(e(this), l.index)
-          }
-        })
-      };
-      c.open = function() {
-        return this.each(function() {
-          var m = e(this),
-            l = m.data("ddslick");
-          if (l) {
-            f(m)
-          }
-        })
-      };
-      c.close = function() {
-        return this.each(function() {
-          var m = e(this),
-            l = m.data("ddslick");
-          if (l) {
-            k(m)
-          }
-        })
-      };
-      c.destroy = function() {
-        return this.each(function() {
-          var n = e(this),
-            m = n.data("ddslick");
-          if (m) {
-            var l = m.original;
-            n.removeData("ddslick").unbind(".ddslick").replaceWith(l)
-          }
-        })
-      };
-
-      function j(q, s) {
-        var u = q.data("ddslick");
-        var r = q.find(".dd-selected"),
-          n = r.siblings(".dd-selected-value"),
-          v = q.find(".dd-options"),
-          l = r.siblings(".dd-pointer"),
-          p = q.find(".dd-option").eq(s),
-          m = p.closest("li"),
-          o = u.settings,
-          t = u.settings.data[s];
-        q.find(".dd-option").removeClass("dd-option-selected");
-        p.addClass("dd-option-selected");
-        u.selectedIndex = s;
-        u.selectedItem = m;
-        u.selectedData = t;
-        if (o.showSelectedHTML) {
-          r.html((t.imageSrc ? '<img class="dd-selected-image' + (o.imagePosition == "right" ? " dd-image-right" : "") + '" src="' + t.imageSrc + '" />' : "") + (t.text ? '<label class="dd-selected-text">' + t.text + "</label>" : "") + (t.description ? '<small class="dd-selected-description dd-desc' + (o.truncateDescription ? " dd-selected-description-truncated" : "") + '" >' + t.description + "</small>" : ""))
-        } else {
-          r.html(t.text)
-        }
-        n.val(t.value);
-        u.original.val(t.value);
-        q.data("ddslick", u);
-        k(q);
-        g(q);
-        if (typeof o.onSelected == "function") {
-          o.onSelected.call(this, u)
-        }
-      }
-
-      function f(p) {
-        var o = p.find(".dd-select"),
-          m = o.siblings(".dd-options"),
-          l = o.find(".dd-pointer"),
-          n = m.is(":visible");
-        e(".dd-click-off-close").not(m).slideUp(50);
-        e(".dd-pointer").removeClass("dd-pointer-up");
-        if (n) {
-          m.slideUp("fast");
-          l.removeClass("dd-pointer-up")
-        } else {
-          m.slideDown("fast");
-          l.addClass("dd-pointer-up")
-        }
-        h(p)
-      }
-
-      function k(l) {
-        l.find(".dd-options").slideUp(50);
-        l.find(".dd-pointer").removeClass("dd-pointer-up").removeClass("dd-pointer-up")
-      }
-
-      function g(o) {
-        var n = o.find(".dd-select").css("height");
-        var m = o.find(".dd-selected-description");
-        var l = o.find(".dd-selected-image");
-        if (m.length <= 0 && l.length > 0) {
-          o.find(".dd-selected-text").css("lineHeight", n)
-        }
-      }
-
-      function h(l) {
-        l.find(".dd-option").each(function() {
-          var p = e(this);
-          var n = p.css("height");
-          var o = p.find(".dd-option-description");
-          var m = l.find(".dd-option-image");
-          if (o.length <= 0 && m.length > 0) {
-            p.find(".dd-option-text").css("lineHeight", n)
-          }
-        })
-      }
-    })(jQuery);
-  </script>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i" rel="stylesheet">
-
-  <!-- Range slider -->
-  <script type="text/javascript" src="https://refreshless.com/noUiSlider/distribute/nouislider.js?v=1000"></script>
   <style>
     .text--white {
       color: #fff;
@@ -344,18 +117,12 @@
     }
 
     strong,
-    .bold,
-    .table--padded th,
-    .table--padded .th {
+    .bold {
       font-weight: bold;
     }
 
     small,
-    .small,
-    .table--padded th,
-    .table--padded .th,
-    .table--padded td,
-    .table--padded .td {
+    .small {
       font-size: .8em;
     }
 
@@ -629,17 +396,32 @@
     a {
       color: #005F9E;
       text-decoration: none;
+      position: relative;
+    }
+
+    a:not(.collapse--toggle):before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      border-bottom: 2px solid;
+      transition: .3s;
     }
 
     a:hover,
     a:focus {
       color: #005F9E;
-      text-decoration: underline;
+    }
+
+    a:hover:before {
+      width: 100%;
     }
 
     a:focus {
       outline: 5px auto -webkit-focus-ring-color;
       outline-offset: -2px;
+      text-decoration: underline;
     }
 
     figure {
@@ -1766,8 +1548,7 @@
     }
     /* Positioning */
 
-    .absolute,
-    .stub {
+    .absolute {
       position: absolute !important;
     }
 
@@ -1777,6 +1558,12 @@
 
     .relative {
       position: relative;
+    }
+
+    .centered {
+      left: 50%;
+      transform: translate(-50%, -50%);
+      top: 50%;
     }
 
     .d--block {
@@ -2038,14 +1825,12 @@
       }
     }
 
-    .pb--2,
-    .search-result--price {
+    .pb--2 {
       padding-bottom: 9px;
     }
 
     @media all and (min-width: 768px) {
-      .pb--2,
-      .search-result--price {
+      .pb--2 {
         padding-bottom: 18px;
       }
     }
@@ -2074,14 +1859,12 @@
       }
     }
 
-    .pt--2,
-    .search-result--price {
+    .pt--2 {
       padding-top: 9px;
     }
 
     @media all and (min-width: 768px) {
-      .pt--2,
-      .search-result--price {
+      .pt--2 {
         padding-top: 18px;
       }
     }
@@ -2416,14 +2199,14 @@
       background-color: #005F9E;
       padding: calc(18px*5) 0 18px;
       margin-bottom: calc(18px*2);
+      text-align: center;
     }
-
-    .cover {
-      background: url("https://images.unsplash.com/photo-1475503572774-15a45e5d60b9") no-repeat 0 0;
-      background-size: cover;
-      left: 0;
-      position: absolute;
-    }
+    /*.cover {
+  background: url("https://images.unsplash.com/photo-1475503572774-15a45e5d60b9") no-repeat 0 0;
+  background-size: cover;
+  left: 0;
+  position: absolute;
+}*/
 
     @media only screen and (max-width: 1023px) {
       .menu-list .dropdown-menu {
@@ -2472,7 +2255,7 @@
         color: #fff;
         font-size: .8rem;
         line-height: calc(18px*4);
-        padding-left: calc(18px*2);
+        margin-left: calc(18px*2);
       }
       .nav__item:hover,
       .nav__item:focus {
@@ -2875,11 +2658,11 @@
     }
 
     @media all and (min-width: 768px) {
-      .form-wrap:nth-child(odd) {
+      .form-wrap:nth-of-type(odd) {
         padding-left: 0;
         padding-right: 9px;
       }
-      .form-wrap:nth-child(even) {
+      .form-wrap:nth-of-type(even) {
         padding-left: 9px;
         padding-right: 0;
       }
@@ -5068,570 +4851,151 @@
       background-image: url(https://lipis.github.io/flag-icon-css/flags/1x1/un.svg);
     }
 
-    .table--padded th,
-    .table--padded .th,
-    .table--padded tr:nth-child(even),
-    .table--padded .tr:nth-child(even) {
-      background-color: #FBFBFB;
+    .hero {
+      background-color: #005f9e;
+      padding: 10rem 0 5rem;
     }
 
-    .table--padded th,
-    .table--padded .th,
-    .table--padded td,
-    .table--padded .td {
-      border: 1px solid #CBCBCB;
-      padding: 1rem;
-    }
-
-    .sidebar-search {
-      transition: ease all .3s;
-    }
-
-    @media all and (min-width: 1024px) {
-      .sidebar-search {
-        padding-top: calc(18px*3);
-      }
-    }
-
-    .search {
-      background-color: #FBFBFB;
-    }
-
-    .search-result--wrapper {
-      overflow: hidden;
-    }
-
-    .search-result,
-    .search-result--single {
-      padding: 18px 0;
-    }
-
-    .search-result {
-      background-color: #fff;
-      border: 1px solid #CBCBCB;
-      border-radius: 3px;
-      color: #4B4B4B;
-      display: block;
-      float: left;
-      width: 100%;
-    }
-
-    .search-result .plane {
-      transition: all .3s ease-in-out;
-    }
-
-    .search-result:hover {
-      background-color: #FBFBFB;
-      color: #4B4B4B;
-    }
-
-    .search-result:hover .plane {
-      margin-right: -18px;
-    }
-
-    .search-result:hover .button {
-      background-color: #00752f;
-    }
-
-    @media all and (min-width: 767px) {
-      .search-result--single {
-        padding-top: calc(18px*1.5);
-      }
-    }
-
-    .airline-logo {
-      max-height: 18px;
-    }
-
-    @media all and (max-width: 767px) {
-      .airline-logo {
-        margin: 9px 0 18px;
-      }
-    }
-
-    .highlight {
-      background-color: #f5e79e;
-    }
-
-    .search-result--price {
-      margin: 18px 0 0;
-    }
-
-    @media all and (max-width: 768px) {
-      .search-result--price {
-        border-top: 1px dashed #CBCBCB;
+    @media all and (min-width: 768px) {
+      .hero {
+        padding: 10rem 0;
       }
     }
 
     @media all and (min-width: 768px) {
-      .search-result--price {
-        border-left: 1px dashed #CBCBCB;
-        margin-top: -18px;
-        margin-bottom: -9px;
-      }
-    }
-
-    @media all and (max-width: 767px) {
-      .search-result--price {
-        padding-top: 18px;
-      }
-    }
-
-    .stub {
-      background-color: #FBFBFB;
-      border: 1px solid #CBCBCB;
-      border-radius: 100%;
-      height: 9px;
-      top: calc(-9px/2);
-      width: 9px;
-    }
-
-    @media all and (min-width: 768px) {
-      .stub {
-        height: 18px;
-        top: auto;
-        width: 18px;
-      }
-    }
-
-    .stub--bottom {
-      right: calc(-9px/2);
-    }
-
-    @media all and (min-width: 768px) {
-      .stub--bottom {
-        bottom: -18px;
-        left: -9px;
-      }
-    }
-
-    .stub--middle {
-      border-style: dashed;
-      left: 50%;
-      margin-left: calc(-9px/2);
-    }
-
-    @media all and (min-width: 768px) {
-      .stub--middle {
-        left: calc(-9px/2);
-        margin-top: calc(-9px/2);
-        top: 50%;
-      }
-    }
-
-    .stub--top {
-      left: calc(-9px/2);
-    }
-
-    @media all and (min-width: 768px) {
-      .stub--top {
-        left: -9px;
-        top: -9px;
-      }
-    }
-
-    @media all and (max-width: 767px) {
-      .search-result--currency {
-        margin-right: 9px;
-      }
-    }
-
-    @media all and (min-width: 768px) {
-      .search-result--currency {
-        font-size: calc(18px*1.5);
-        display: block;
-      }
-    }
-
-    .search--summary,
-    .search--sorting {
-      margin-bottom: 18px;
-    }
-
-    @media all and (max-width: 768px) {
-      .search--summary,
-      .search--sorting {
-        text-align: center;
-      }
-    }
-
-    @media all and (min-width: 1024px) {
-      .filter--toggle {
+      .scrolling-list li {
         margin-bottom: 18px;
       }
     }
 
-    @media all and (min-width: 768px) {
-      .search--summary {
-        padding-top: 9px;
+    @media all and (max-width: 768px) {
+      .scrolling-list {
+        overflow-x: scroll;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
       }
     }
 
+    @media all and (max-width: 768px) {
+      .scrolling-list .button {
+        display: inline-block;
+        height: auto;
+      }
+    }
+
+    .nav-tabs .active g {
+      stroke: #FE6600;
+    }
+
+    .nav-tabs .active .button {
+      border-color: #FE6600;
+      color: #FE6600;
+      transition: all ease .3s;
+    }
+
+    .nav-tabs .active .button:hover,
+    .nav-tabs .active .button :focus {
+      background-color: transparent;
+      cursor: default;
+    }
+
+    .nav-tabs .active:hover,
+    .nav-tabs .active :focus {
+      text-decoration: none;
+    }
+
+    .tab-content>.tab-pane {
+      display: none;
+    }
+
+    .tab-content>.active {
+      display: block;
+    }
+
+    .tab-content--bordered {
+      border: 1px solid #CBCBCB;
+      border-radius: 9px;
+      padding: 18px;
+    }
+
+    .live-search:nth-child(odd) {
+      padding-right: 9px;
+    }
+
+    .live-search:nth-child(even) {
+      padding-left: 9px;
+    }
+
+    @media all and (max-width: 515px) {
+      .live-search {
+        text-align: center;
+      }
+    }
+
+    @media all and (min-width: 515px) {
+      .live-search {
+        float: left;
+        width: 50%;
+      }
+    }
+
+    .live-search--data {
+      border: 1px solid #CBCBCB;
+      box-shadow: none;
+      display: inline-block;
+      margin-bottom: 9px;
+      padding: 9px 0;
+      transition: all ease .3s;
+      width: 100%;
+    }
+
+    @media all and (min-width: 768px) {
+      .live-search--data {
+        padding: 18px 0;
+      }
+    }
+
+    .live-search--data:nth-child(odd) {
+      padding-left: 0;
+    }
+
+    .live-search--data:nth-child(even) {
+      padding-right: 0;
+    }
+
     @media all and (min-width: 1024px) {
-      .search--sorting {
+      .live-search--data:nth-child(even) {
+        border-left: none;
+      }
+    }
+
+    .live-search--data:hover {
+      box-shadow: 0 4px 16px #CBCBCB;
+      color: #4B4B4B;
+      text-decoration: none;
+    }
+
+    @media all and (min-width: 1024px) {
+      .live-search--data .cta {
         text-align: right;
       }
     }
 
-    .collapse--toggle {
-      background: url(https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--minus.svg) no-repeat 0 0 transparent;
-      padding-left: calc(9px*3);
-      transition: all ease .3s;
-    }
-
-    .collapse--toggle.collapsed {
-      background: url(https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plus.svg) no-repeat 0 0 transparent;
-    }
-
-    @media all and (max-width: 768px) {
-      .collapse--toggle {
-        padding-bottom: 9px;
-      }
-    }
-
-    @media all and (max-width: 992px) {
-      .filter--toggle {
-        background-color: #FE6600;
-        bottom: 9px;
-        border-radius: 3px;
-        color: #fff;
-        left: 18px;
-        padding: 1rem;
-        position: fixed;
-        right: 18px;
-        text-align: center;
-        z-index: 2;
-      }
-    }
-
-    .close {
-      filter: alpha(opacity=20);
-      opacity: 0.2;
-    }
-
-    .close:focus,
-    .close:hover {
-      cursor: pointer;
-      filter: alpha(opacity=50);
-      opacity: 0.5;
-    }
-
-    .modal-open {
-      overflow: hidden;
-    }
-
-    @media all and (max-width: 768px) {
-      .search--modal {
-        background-color: rgba(0, 0, 0, 0.75);
-        bottom: 0;
-        display: none;
-        left: 0;
-        position: fixed;
-        right: 0;
-        top: 0;
-        outline: 0;
-        overflow: hidden;
-        -webkit-overflow-scrolling: touch;
-        z-index: 1050;
-      }
-    }
-
-    .search--modal.fade .modal-dialog {
-      -webkit-transition: -webkit-transform .3s ease-out;
-      -o-transition: -o-transform .3s ease-out;
-      transition: transform .3s ease-out;
-      -webkit-transform: translate(0, -25%);
-      -ms-transform: translate(0, -25%);
-      -o-transform: translate(0, -25%);
-      transform: translate(0, -25%);
-    }
-
-    .modal.in .modal-dialog {
-      -webkit-transform: translate(0, 0);
-      -ms-transform: translate(0, 0);
-      -o-transform: translate(0, 0);
-      transform: translate(0, 0);
-    }
-
-    .modal-open .modal {
-      overflow-x: hidden;
-      overflow-y: auto;
-    }
-
-    .modal-dialog {
-      position: relative;
-      width: auto;
-    }
-
-    @media all and (max-width: 768px) {
-      .modal-content {
-        background-color: #fff;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-        margin: calc(18px*1.5) 2.5% 0;
-        outline: 0;
-        padding: 18px;
-        position: relative;
-        width: 95%;
-      }
-    }
-
     @media all and (min-width: 1024px) {
-      .modal-content {
-        padding: 0;
+      .live-search--meta {
+        text-align: right;
       }
     }
 
-    .modal-backdrop {
-      bottom: 0;
-      left: 0;
-      position: fixed;
-      right: 0;
-      top: 0;
-      z-index: 1040;
+    .live-search--price {
+      color: #00A843;
     }
-
-    .modal-backdrop.fade {
-      filter: alpha(opacity=0);
-      opacity: 0;
-    }
-
-    .modal-backdrop.in {
-      filter: alpha(opacity=50);
-      opacity: 0.5;
-    }
-
-    .modal-body {
-      position: relative;
-    }
-
-    .modal-scrollbar-measure {
-      position: absolute;
-      top: -9999px;
-      width: 50px;
-      height: 50px;
-      overflow: scroll;
-    }
-    /*! nouislider - 10.0.0 - 2017-05-28 14:52:48 */
-    /* Functional styling;
- * These styles are required for noUiSlider to function.
- * You don't need to change these rules to apply your design.
- */
-    /*
- * 
- * Modified by Luis Ouriach @disco_lu on 23/07/2017
- * 
- */
-
-    .noUi-target,
-    .noUi-target * {
-      -webkit-touch-callout: none;
-      -webkit-tap-highlight-color: transparent;
-      -webkit-user-select: none;
-      -ms-touch-action: none;
-      touch-action: none;
-      -ms-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-
-    .noUi-target {
-      position: relative;
-      direction: ltr;
-    }
-
-    .noUi-base {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      z-index: 1;
-    }
-
-    .noUi-connect {
-      position: absolute;
-      right: 0;
-      top: 0;
-      left: 0;
-      bottom: 0;
-    }
-
-    .noUi-origin {
-      position: absolute;
-      height: 0;
-      width: 0;
-    }
-
-    .noUi-handle {
-      position: relative;
-      z-index: 1;
-    }
-
-    .noUi-state-tap .noUi-connect,
-    .noUi-state-tap .noUi-origin {
-      -webkit-transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
-      transition: top 0.3s, right 0.3s, bottom 0.3s, left 0.3s;
-    }
-
-    .noUi-state-drag * {
-      cursor: inherit !important;
-    }
-    /* Painting and performance;
- * Browsers can paint handles in their own layer.
- */
-
-    .noUi-base,
-    .noUi-handle {
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-    }
-    /* Slider size and handle placement;
- */
-
-    .noUi-horizontal {
-      background-color: #fff;
-      border: 1px solid #FE6600;
-      height: calc(9px/2);
-    }
-
-    .noUi-handle-lower,
-    .noUi-handle-upper {
-      height: 18px;
-      top: -9px;
-      width: 18px;
-    }
-
-    .noUi-handle-lower {
-      left: 0;
-    }
-
-    .noUi-handle-upper {
-      right: 18px;
-    }
-    /* Styling;
- */
-
-    .noUi-connect {
-      background: #FE6600;
-      -webkit-transition: background 450ms;
-      transition: background 450ms;
-    }
-    /* Handles and cursors;
- */
-
-    .noUi-draggable {
-      cursor: ew-resize;
-    }
-
-    .noUi-vertical .noUi-draggable {
-      cursor: ns-resize;
-    }
-
-    .noUi-handle {
-      background-color: #fff;
-      border-radius: 3px;
-      box-shadow: 0 0 0 2px #FE6600, 0 0 0 4px #fff;
-      cursor: pointer;
-    }
-
-    .noUi-handle:focus {
-      outline: none;
-    }
-
-    .noUi-active {
-      background-color: #FE6600;
-      outline: none;
-    }
-    /* Disabled state;
- */
-
-    [disabled] .noUi-connect {
-      background: #CBCBCB;
-    }
-
-    [disabled].noUi-target,
-    [disabled].noUi-handle,
-    [disabled] .noUi-handle {
-      cursor: not-allowed;
-    }
-    /* Base;
- *
- */
-
-    .noUi-pips,
-    .noUi-pips * {
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-    }
-
-    .noUi-pips {
-      position: absolute;
-      color: #999;
-    }
-    /* Values;
- *
- */
-
-    .noUi-value {
-      position: absolute;
-      white-space: nowrap;
-      text-align: center;
-    }
-
-    .noUi-value-sub {
-      color: #ccc;
-      font-size: 10px;
-    }
-    /* Markings;
- *
- */
-
-    .noUi-marker {
-      position: absolute;
-      background: #CCC;
-    }
-
-    .noUi-marker-sub {
-      background: #AAA;
-    }
-
-    .noUi-marker-large {
-      background: #AAA;
-    }
-    /* Horizontal layout;
- *
- */
-
-    .noUi-pips-horizontal {
-      padding: 10px 0;
-      height: 80px;
-      top: 100%;
-      left: 0;
-      width: 100%;
-    }
-
-    .noUi-value-horizontal {
-      -webkit-transform: translate3d(-50%, 50%, 0);
-      transform: translate3d(-50%, 50%, 0);
-    }
-
-    .noUi-marker-horizontal.noUi-marker {
-      margin-left: -1px;
-      width: 2px;
-      height: 5px;
-    }
-
-    .noUi-marker-horizontal.noUi-marker-sub {
-      height: 10px;
-    }
-
-    .noUi-marker-horizontal.noUi-marker-large {
-      height: 15px;
-    }
-    /*# sourceMappingURL=search-results.css.map */
+    /*# sourceMappingURL=landing.css.map */
   </style>
 </head>
 
-<body class="search">
-  <header class="header header--trim">
+<body>
+  <header class="header">
     <nav class="[ relative z--1 ] navbar">
       <div class="container">
         <div class="navbar-header">
@@ -5673,540 +5037,409 @@
         </div>
       </div>
     </nav>
+  </header>
+
+  <section class="clearfix mb--3 relative hero">
     <div class="container">
       <div class="row">
-        <div class="col-md-12 text--white">
-          <h1 class="h2 mb--0 page-title">Search results for <abbr title="London Gatwick">LGW</abbr></strong> to <strong><abbr title="Barcelona">BCN</abbr></strong></h1>
-          <p>Departing <strong>24/01/2017</strong> returning <strong>28/01/2017</strong></p>
+        <div class="col-md-8 col-md-push-2">
+          <form class="js-search-form search-form--lg">
+            <fieldset>
+              <legend class="h1 [ text--center text--white ]">Search for easyJet flights.</legend>
+              <div class="[ col-xs-12 col-sm-6 col-md-6 ] mb--3 search--from">
+                <label class="d--block text--white mb--1 hidden-xs" for="flight-from">Travelling from</label>
+                <div class="icon-wrap icon-wrap--plane">
+                  <input type="text" id="flight-from" name="flight-from" placeholder="From" value="" class="input--focus col-xs-12 awesomeplete">
+                </div>
+              </div>
+              <div class="[ col-xs-12 col-sm-6 col-md-6 ] mb--3 search--to">
+                <label class="d--block text--white mb--1 hidden-xs" for="flight-to">Travelling to</label>
+                <div class="icon-wrap icon-wrap--plane">
+                  <input type="text" id="flight-to" name="flight-to" placeholder="To" value="" class="input--focus col-xs-12 awesomeplete">
+                </div>
+              </div>
+              <div class="[ col-xs-5 col-sm-3 col-md-3 ] mb--3 search--departure">
+                <label class="d--block text--white mb--1" for="flight-departure"><span class="hidden-md">Date</span> Departing</label>
+                <div class="icon-wrap icon-wrap--calendar">
+                  <input type="text" id="flight-departure" name="flight-departure" placeholder="Date" value="08/09/17" class="input--focus date-popout col-xs-12">
+                </div>
+              </div>
+              <div class="[ col-xs-2 col-sm-2 col-md-2 ] mb--3 search--return-check">
+                <div class="d--inline-block [ text--white text--center ] mb--1">Return?</div>
+                <div class="onoffswitch">
+                  <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                  <label class="onoffswitch-label small" for="myonoffswitch">
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+              </div>
+              <div class="[ col-xs-5 col-sm-3 col-md-3 ] mb--3 search--return">
+                <label class="d--block text--white mb--1" for="flight-return"><span class="hidden-md">Date</span> Returning</label>
+                <div class="icon-wrap icon-wrap--calendar">
+                  <input type="text" id="flight-return" name="flight-return" placeholder="Date" value="11/09/17" class="input--focus date-popout col-xs-12">
+                </div>
+              </div>
+
+              <div class="[ col-xs-12 col-sm-4 col-md-4 ] mb--3 search--passengers">
+                <label class="d--block text--white mb--1 hidden-xs" for="">Passengers</label>
+                <div class="form-dropdown--wrapper">
+                  <div class="icon-wrap icon-wrap--user">
+                    <div class="button background--white form-dropdown--toggle">
+                      2 adults
+                    </div>
+                  </div>
+                  <div class="form-dropdown--fields">
+                    <div class="mt--1 col-xs-12">
+                      <label for="passengers-adults" class="pl--0 mt--1 small col-xs-4 col-sm-5">Adults</label>
+                      <select class="button--outline small col-xs-8 col-sm-7" id="passengers-adults" name="passengers-adults" value="">
+                              <option value="1">1</option>
+                              <option value="2" selected="selected">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                            </select>
+                    </div>
+                    <div class="mt--1 col-xs-12">
+                      <label for="" class="p--0 mt--1 mb--2 small col-xs-4 col-sm-5">Under 18s</label>
+                      <select class="button--outline small col-xs-8 col-sm-7" id="passenger-18" name="">
+                              <option value="0" selected="selected">0</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                            </select>
+                      <div id="js-passenger-18--wrapper" class="[ p--0 pb--1 mt--1 ] background--white col-xs-12" style="display: none;">
+                        <div id="js-passenger-18--age" class="[ p--0 mb--1 ] col-xs-12"></div>
+                      </div>
+                    </div>
+                    <div class="[ mb--1 mt--1 ] col-xs-12">
+                      <span class="d--block text--center [ button button--green ] small js-passenger--button">Confirm</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text--center [ col-xs-12 col-sm-12 col-md-4 col-md-push-4 ]">
+                <button class="[ button button--orange ] col-md-12">Search for flights</button>
+              </div>
+            </fieldset>
+          </form>
         </div>
       </div>
     </div>
-  </header>
 
-  <section>
+  </section>
+
+  <section class="[ mb--3 pt--2 pb--3 ] live-prices">
     <div class="container">
       <div class="row">
-        <div class="col-md-9 mb--2 col-md-push-3">
-          <div class="search--summary col-sm-6 col-md-6">
-            <p class="small">Flights from <strong><strong>$100</strong></strong> with <strong>2 airlines</strong></p>
-          </div>
-          <div class="search--sorting col-sm-6 col-md-6">
-            <label for="sort-select" class="small">Sort by</label>
-            <select class="input--border small">
-              <option value="price">Price per adult</option>
-              <option value="duration">Total journey time</option>
-              <option value="outbound_departure_time">Outbound: Departure time</option>
-              <option value="return_departure_time">Return: Departure time</option>
-              <option value="airlines">Airline</option>
-              <option value="stops">Stops</option>
-            </select>
-          </div>
-
-          <div class="[ mb--3 p--0 ] col-sm-12 col-md-12 results">
-            <div class="[ p--0 mb--2 ] search-result--wrapper col-md-12">
-              <a href="#" class="search-result">
-                <div class="text--center small p--0 [ [ col-xs-12 col-sm-9 col-md-9 ] ]">
-                  <div class="p--0 text--center col-md-12">
-                    <div class="col-xs-12 col-sm-3 col-md-3">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--easyjet.png" alt="" class="airline-logo" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>23:50</strong> <abbr title="London Gatwick">LGW</abbr>
-                    </div>
-                    <div class="p--0 [ col-md-1 col-sm-1 col-xs-1 ]">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>01:10</strong> <abbr title="Barcelona">BCN</abbr> <span title="Lands next day">(+1)</span>
-                    </div>
-                    <div class="p--0 [ col-xs-3 col-md-2 col-sm-2 ]">
-                      2h 20m
-                    </div>
-                  </div>
-                  <div class="divider p--0 col-sm-12 col-xs-12 col-md-12"></div>
-                  <div class="p--0 text--center col-md-12">
-                    <div class="col-xs-12 col-sm-3 col-md-3">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--easyjet.png" alt="" class="airline-logo" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>08:50</strong> <abbr title="Barcelona">BCN</abbr>
-                    </div>
-                    <div class="p--0 [ col-md-1 col-sm-1 col-xs-1 ]">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>10:55</strong> <abbr title="London Stansted"><span class="highlight" title="Returns to a different airport">STN</span></abbr>
-                    </div>
-                    <div class="p--0 [ col-xs-3 col-md-2 col-sm-2 ]">
-                      2h 5m
-                    </div>
-                  </div>
-                </div>
-                <div class="text--center search-result--price col-xs-12 col-sm-3 col-md-3">
-                  <span class="search-result--currency"><strong>$100</strong></span>
-                  <span class="[ button button--green ] small">Continue</span>
-                  <div class="stub stub--top"></div>
-                  <div class="stub stub--middle"></div>
-                  <div class="stub stub--bottom"></div>
-                </div>
-              </a>
-            </div>
-            <div class="[ p--0 mb--2 ] search-result--wrapper col-md-12">
-              <a href="#" class="search-result">
-                <div class="text--center small search-result--single [ col-xs-12 col-sm-9 col-md-9 ]">
-                  <div class="p--0 text--center col-md-12">
-                    <div class="col-xs-12 col-sm-3 col-md-3">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--ryanair.png" alt="" class="airline-logo" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>08:50</strong> <abbr title="Barcelona">BCN</abbr>
-                    </div>
-                    <div class="p--0 [ col-md-1 col-sm-1 col-xs-1 ]">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>10:55</strong> <abbr title="London Gatwick">LGW</abbr>
-                    </div>
-                    <div class="p--0 [ col-xs-3 col-md-2 col-sm-2 ]">
-                      2h 5m
-                    </div>
-                  </div>
-                </div>
-                <div class="text--center search-result--price col-xs-12 col-sm-3 col-md-3">
-                  <span class="search-result--currency"><strong>$100</strong></span>
-                  <span class="[ button button--green ] small">Continue</span>
-                  <div class="stub stub--top"></div>
-                  <div class="stub stub--middle"></div>
-                  <div class="stub stub--bottom"></div>
-                </div>
-              </a>
-            </div>
-            <div class="[ p--0 mb--2 ] search-result--wrapper col-md-12">
-              <a href="#" class="search-result">
-                <div class="text--center small p--0 [ [ col-xs-12 col-sm-9 col-md-9 ] ]">
-                  <div class="p--0 text--center col-md-12">
-                    <div class="col-xs-12 col-sm-3 col-md-3">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--tui-fly.png" alt="" class="airline-logo" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>08:50</strong> <abbr title="Barcelona">BCN</abbr>
-                    </div>
-                    <div class="p--0 [ col-md-1 col-sm-1 col-xs-1 ]">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>10:55</strong> <abbr title="London Gatwick">LGW</abbr>
-                    </div>
-                    <div class="p--0 [ col-xs-3 col-md-2 col-sm-2 ]">
-                      2h 5m
-                    </div>
-                  </div>
-                  <div class="divider p--0 col-sm-12 col-xs-12 col-md-12"></div>
-                  <div class="p--0 text--center col-md-12">
-                    <div class="col-xs-12 col-sm-3 col-md-3">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--tiger-air.png" alt="" class="airline-logo" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>08:50</strong> <abbr title="Barcelona">BCN</abbr>
-                    </div>
-                    <div class="p--0 [ col-md-1 col-sm-1 col-xs-1 ]">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>10:55</strong> <abbr title="London Stansted"><span class="highlight" title="Returns to a different airport">STN</span></abbr>
-                    </div>
-                    <div class="p--0 [ col-xs-3 col-md-2 col-sm-2 ]">
-                      2h 5m
-                    </div>
-                  </div>
-                </div>
-                <div class="text--center search-result--price col-xs-12 col-sm-3 col-md-3">
-                  <span class="search-result--currency"><strong>$100</strong></span>
-                  <span class="[ button button--green ] small">Continue</span>
-                  <div class="stub stub--top"></div>
-                  <div class="stub stub--middle"></div>
-                  <div class="stub stub--bottom"></div>
-                </div>
-              </a>
-            </div>
-            <div class="[ p--0 mb--2 ] search-result--wrapper col-md-12">
-              <a href="#" class="search-result">
-                <div class="text--center small p--0 [ [ col-xs-12 col-sm-9 col-md-9 ] ]">
-                  <div class="p--0 text--center col-md-12">
-                    <div class="col-xs-12 col-sm-3 col-md-3">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--southwest.png" alt="" class="airline-logo" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>08:50</strong> <abbr title="Barcelona">BCN</abbr>
-                    </div>
-                    <div class="p--0 [ col-md-1 col-sm-1 col-xs-1 ]">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>10:55</strong> <abbr title="London Gatwick">LGW</abbr>
-                    </div>
-                    <div class="p--0 [ col-xs-3 col-md-2 col-sm-2 ]">
-                      2h 5m
-                    </div>
-                  </div>
-                  <div class="divider p--0 col-sm-12 col-xs-12 col-md-12"></div>
-                  <div class="p--0 text--center col-md-12">
-                    <div class="col-xs-12 col-sm-3 col-md-3">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--air-asia.png" alt="" class="airline-logo" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>08:50</strong> <abbr title="Barcelona">BCN</abbr>
-                    </div>
-                    <div class="p--0 [ col-md-1 col-sm-1 col-xs-1 ]">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>10:55</strong> <abbr title="London Gatwick">LGW</abbr>
-                    </div>
-                    <div class="p--0 [ col-xs-3 col-md-2 col-sm-2 ]">
-                      2h 5m
-                    </div>
-                  </div>
-                </div>
-                <div class="text--center search-result--price col-xs-12 col-sm-3 col-md-3">
-                  <span class="search-result--currency"><strong>$100</strong></span>
-                  <span class="[ button button--green ] small">Continue</span>
-                  <div class="stub stub--top"></div>
-                  <div class="stub stub--middle"></div>
-                  <div class="stub stub--bottom"></div>
-                </div>
-              </a>
-            </div>
-            <div class="[ p--0 mb--2 ] search-result--wrapper col-md-12">
-              <a href="#" class="search-result">
-                <div class="text--center small p--0 [ [ col-xs-12 col-sm-9 col-md-9 ] ]">
-                  <div class="p--0 text--center col-md-12">
-                    <div class="col-xs-12 col-sm-3 col-md-3">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--easyjet.png" alt="" class="airline-logo" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>08:50</strong> <abbr title="Barcelona">BCN</abbr>
-                    </div>
-                    <div class="p--0 [ col-md-1 col-sm-1 col-xs-1 ]">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>10:55</strong> <abbr title="London Gatwick">LGW</abbr>
-                    </div>
-                    <div class="p--0 [ col-xs-3 col-md-2 col-sm-2 ]">
-                      2h 5m
-                    </div>
-                  </div>
-                  <div class="divider p--0 col-sm-12 col-xs-12 col-md-12"></div>
-                  <div class="p--0 text--center col-md-12">
-                    <div class="col-xs-12 col-sm-3 col-md-3">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--tiger-air.png" alt="" class="airline-logo" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>08:50</strong> <abbr title="Barcelona">BCN</abbr>
-                    </div>
-                    <div class="p--0 [ col-md-1 col-sm-1 col-xs-1 ]">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>10:55</strong> <abbr title="London Gatwick">LGW</abbr>
-                    </div>
-                    <div class="p--0 [ col-xs-3 col-md-2 col-sm-2 ]">
-                      2h 5m
-                    </div>
-                  </div>
-                </div>
-                <div class="text--center search-result--price col-xs-12 col-sm-3 col-md-3">
-                  <span class="search-result--currency"><strong>$100</strong></span>
-                  <span class="[ button button--green ] small">Continue</span>
-                  <div class="stub stub--top"></div>
-                  <div class="stub stub--middle"></div>
-                  <div class="stub stub--bottom"></div>
-                </div>
-              </a>
-            </div>
-            <div class="[ p--0 mb--2 ] search-result--wrapper col-md-12">
-              <a href="#" class="search-result">
-                <div class="text--center small p--0 [ [ col-xs-12 col-sm-9 col-md-9 ] ]">
-                  <div class="p--0 text--center col-md-12">
-                    <div class="col-xs-12 col-sm-3 col-md-3">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--easyjet.png" alt="" class="airline-logo" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>08:50</strong> <abbr title="Barcelona">BCN</abbr>
-                    </div>
-                    <div class="p--0 [ col-md-1 col-sm-1 col-xs-1 ]">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>10:55</strong> <abbr title="London Gatwick">LGW</abbr>
-                    </div>
-                    <div class="p--0 [ col-xs-3 col-md-2 col-sm-2 ]">
-                      2h 5m
-                    </div>
-                  </div>
-                  <div class="divider p--0 col-sm-12 col-xs-12 col-md-12"></div>
-                  <div class="p--0 text--center col-md-12">
-                    <div class="col-xs-12 col-sm-3 col-md-3">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--tiger-air.png" alt="" class="airline-logo" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>08:50</strong> <abbr title="Barcelona">BCN</abbr>
-                    </div>
-                    <div class="p--0 [ col-md-1 col-sm-1 col-xs-1 ]">
-                      <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" />
-                    </div>
-                    <div class="p--0 [ col-xs-4 col-sm-3 col-md-3 ]">
-                      <strong>10:55</strong> <abbr title="London Gatwick">LGW</abbr>
-                    </div>
-                    <div class="p--0 [ col-xs-3 col-md-2 col-sm-2 ]">
-                      2h 5m
-                    </div>
-                  </div>
-                </div>
-                <div class="text--center search-result--price col-xs-12 col-sm-3 col-md-3">
-                  <span class="search-result--currency"><strong>$100</strong></span>
-                  <span class="[ button button--green ] small">Continue</span>
-                  <div class="stub stub--top"></div>
-                  <div class="stub stub--middle"></div>
-                  <div class="stub stub--bottom"></div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="[ mb--3 p--0 ] col-md-12 small pagination">
-            <ul class="list--none list--inline">
-              <li>
-                <a href="#" class="button button--outline"><abbr title="Previous">Prev</abbr></a>
-              </li>
-              <li>
-                <a href="#" class="button button--outline inactive">1</a>
-              </li>
-              <li>
-                <a href="#" class="button button--outline">2</a>
-              </li>
-              <li>
-                <a href="#" class="button button--outline">3</a>
-              </li>
-              <li>
-                <a href="#" class="button button--outline">4</a>
-              </li>
-              <li>
-                <a href="#" class="button button--outline">Next</a>
-              </li>
-            </ul>
-          </div>
+        <div class="text--center col-md-12">
+          <h2>Live easyJet bookings: One way</h2>
         </div>
-        <!-- search results -->
-        <div class="sidebar-search [ col-md-3 col-md-pull-9 ]">
+        <ul class="list--inline text--center col-md-12 [ nav nav-tabs ] scrolling-list" role="tablist">
+          <li class="list--none mr--1 text--lighter small">
+            Departing:
+          </li>
+          <li class="list--none nav-item active">
+            <a href="#manchester" class="text--black button nav-link" data-toggle="tab" role="tab">Manchester</a>
+          </li>
+          <li class="list--none nav-item">
+            <a href="#london" class="text--black button nav-link" data-toggle="tab" role="tab">London</a>
+          </li>
+          <li class="list--none nav-item">
+            <a href="#liverpool" class="text--black button nav-link" data-toggle="tab" role="tab">Liverpool</a>
+          </li>
+          <li class="list--none nav-item">
+            <a href="#edinburgh" class="text--black button nav-link" data-toggle="tab" role="tab">Edinburgh</a>
+          </li>
+        </ul>
 
-          <div class="filter--toggle" data-toggle="modal" data-target=".search--modal">
-            Filter results
-          </div>
-
-          <div class="modal fade search--modal" tabindex="-1" role="dialog" aria-labelledby="filter" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content col-xs-12">
-                <div class="w--100">
-                  <div class="mb--2 small">
-                    <a class="collapse--toggle collapsed link--clean" data-toggle="collapse" href="#amend-search" aria-expanded="true" aria-controls="amend-search">
-                  Amend your search
-                </a>
-                  </div>
-                  <div class="small collapse" id="amend-search">
-                    <div class="mb--2">
-                      <form>
-                        <fieldset>
-                          <legend class="mb--2 d--none">Amend your search</legend>
-                          <div class="mb--1 col-md-12 p--0">
-                            <label class="d--block mb--1" for="flight-from">Travelling from</label>
-                            <input type="text" id="flight-from" name="flight-from" placeholder="From" value="London (LGW)" class="input--border small w--100">
-                          </div>
-                          <div class="mb--1 col-md-12 p--0">
-                            <label class="d--block mb--1" for="flight-to">Travelling to</label>
-                            <input type="text" id="flight-to" name="flight-to" placeholder="To" value="Barcelona (BCN)" class="input--border small w--100">
-                          </div>
-                          <div class="[ col-xs-9 col-sm-9 col-md-8 ] [ mb--1 pl--0 pr--1 ]">
-                            <label class="d--block mb--1" for="flight-departure"><span class="hidden-xs">Date</span> Departing</label>
-                            <input type="text" id="flight-departure" name="daterange" placeholder="Date" value="08-09-2017" class="date-popout input--border small w--100">
-                          </div>
-                          <div class="[ col-xs-3 col-sm-3 col-md-4 ] [ mb--1 pr--0 pl--1 ]">
-                            <div class="mb--1 text--center">Return?</div>
-                            <div class="onoffswitch">
-                              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-                              <label class="onoffswitch-label" for="myonoffswitch">
-                            <span class="onoffswitch-inner input--border"></span>
-                            <span class="onoffswitch-switch"></span>
-                          </label>
-                            </div>
-                          </div>
-                          <div class="mb--1 col-md-12 p--0 date-return">
-                            <label class="d--block mb--1" for="flight-return">Returning</label>
-                            <input type="text" id="flight-return" name="return-departure" placeholder="Date" value="2017-01-28" class="date-popout input--border small w--100">
-                          </div>
-                          <div class="mb--1 [ col-xs-6 col-sm-6 col-md-6 ] [ pl--0 pr--1 ]">
-                            <label class="d--block mb--1" for="flight-passengers">Adults</label>
-                            <select id="flight-passengers" name="return-passengers" placeholder="Passengers" value="" class="input--border small w--100">
-                          <option value="one">1</option>
-                          <option value="two">2</option>
-                          <option value="three">3</option>
-                          <option value="four">4</option>
-                        </select>
-                          </div>
-                          <div class="[ col-xs-6 col-sm-6 col-md-6 ] [ mb--2 pr--0 pl--1 ]">
-                            <label class="d--block mb--1" for="flight-passenger-18">Under 18s</label>
-                            <select id="flight-passengers-18" name="flight-passengers-18" placeholder="Passengers" value="" class="input--border small w--100">
-                          <option value="zero">0</option>
-                          <option value="one">1</option>
-                          <option value="two">2</option>
-                          <option value="three">3</option>
-                          <option value="four">4</option>
-                        </select>
-                          </div>
-                          <div class="[ hidden-xs col-md-12 ] p--0">
-                            <button class="[ button button--orange ] small w--100">Search for flights</button>
-                          </div>
-                        </fieldset>
-                      </form>
-                    </div>
-                  </div>
-                  <!--Amend search -->
-
-                  <div class="mb--2 small">
-                    <a data-toggle="collapse" href="#stops" aria-expanded="false" aria-controls="stops" class="collapse--toggle collapsed link--clean">
-                  Stops
-                </a>
-                  </div>
-                  <div class="small collapse" id="stops">
-                    <div class="mb--2">
-                      <div class="mb--1">
-                        <input type="checkbox" id="stops-none" checked="checked">
-                        <label for="stops-none">
-                  No stops 
-                  <div class="small pl--2">
-                    <strong>11 flights</strong> from <strong>£12</strong>
-                  </div>
-                </label>
-                      </div>
-                      <div class="mb--1">
-                        <input type="checkbox" id="stops-one" checked="checked">
-                        <label for="stops-one">
-                  1 stop
-                  <div class="small pl--2">
-                    <strong>11 flights</strong> from <strong>£12</strong>
-                  </div>
-                </label>
-                      </div>
-                      <div class="mb--1">
-                        <input type="checkbox" id="stops-two" checked="checked">
-                        <label for="stops-two">
-                  2+ stops 
-                  <div class="small pl--2">
-                    <strong>11 flights</strong> from <strong>£12</strong>
-                  </div>
-                </label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- stops -->
-
-                  <div class="mb--2 small">
-                    <a data-toggle="collapse" href="#departure-times" aria-expanded="false" aria-controls="departure-times" class="collapse--toggle collapsed link--clean">
-                Departure times
-            </a>
-                  </div>
-                  <div class="small collapse" id="departure-times">
-                    <div class="mb--2">
-                      <div class="mb--2 date-range">
-                        <label for "time-range__outbound">Outbound</label>
-                        <input type="range" id="time-range__outbound" min="00:00" max="23:59" step="1" class="d--none">
-                        <div class="small">
-                          <span id="outbound-value-lower"></span> - <span id="outbound-value-upper"></span>
-                        </div>
-                        <div id="js-slider-handles__outbound" class="[ noUi-target noUi-ltr noUi-horizontal ] mt--2">
-                        </div>
-                      </div>
-                      <div class="date-range">
-                        <label for "time-range__outbound">Return</label>
-                        <input type="range" id="time-range__outbound" min="00:00" max="23:59" step="1" class="d--none">
-                        <div class="small">
-                          <span id="return-value-lower"></span> - <span id="return-value-upper"></span>
-                        </div>
-                        <div id="js-slider-handles__return" class="[ noUi-target noUi-ltr noUi-horizontal ] mt--2">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Departure times -->
-
-                  <div class="mb--2 small">
-                    <a data-toggle="collapse" href="#journey-duration" aria-expanded="false" aria-controls="journey-duration" class="collapse--toggle collapsed link--clean">
-                Journey duration
+        <div class="tab-content">
+          <div class="tab-pane active" id="manchester" role="tabpanel">
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">MCR</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Paris (CDG)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                        <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£100</strong></span>
+                  </span>
+                </div>
               </a>
-                  </div>
-                  <div class="small collapse" id="journey-duration">
-                    <div class="mb--2 date-range">
-                      <label for "journey-duration">Outbound</label>
-                      <input type="range" id="journey-duration" min="00:00" max="23:59" step="1" class="d--none">
-                      <div class="small">
-                        <span id="duration-value-lower"></span>
-                      </div>
-                      <div id="js-slider-handles__duration" class="[ noUi-target noUi-ltr noUi-horizontal ] mt--2">
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Journey duration -->
-
-                  <div class="small mb--2">
-                    <a data-toggle="collapse" href="#airlines" aria-expanded="false" aria-controls="airlines" class="collapse--toggle collapsed link--clean">
-                    Airlines
-                  </a>
-                  </div>
-                  <div class="small collapse" id="airlines">
-                    <div class="mb--1">
-                      <input type="checkbox" id="air-berlin" checked="checked">
-                      <label for="air-berlin">
-                  Air Berlin
-                  <div class="small pl--2">
-                    <strong>£12</strong>
-                  </div>
-                </label>
-                    </div>
-                    <div class="mb--1">
-                      <input type="checkbox" id="air-berlin" checked="checked">
-                      <label for="air-berlin">
-                  Air Asia
-                  <div class="small pl--2">
-                    <strong>£17</strong>
-                  </div>
-                </label>
-                    </div>
-                    <div class="mb--1">
-                      <input type="checkbox" id="air-berlin" checked="checked">
-                      <label for="air-berlin">
-                  easyJet
-                  <div class="small pl--2">
-                    <strong>£100</strong>
-                  </div>
-                </label>
-                    </div>
-                    <!-- Airlines -->
-
-                  </div>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">MCR</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Berlin (BER)
                 </div>
-                <div class="text--center [ button button--outline ] small col-xs-12" data-toggle="modal" data-target=".modal--filter">
-                  Confirm
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                        <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£89</strong></span>
+                  </span>
                 </div>
-              </div>
+              </a>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">MCR</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Barcelona (BCN)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                        <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£1</strong></span>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">MCR</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Dublin (DUB)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                        <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£249</strong></span>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">MCR</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Paris (CDG)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                          <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£100</strong></span>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">MCR</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Berlin (BER)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                          <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£89</strong></span>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">MCR</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Barcelona (BCN)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                          <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£1</strong></span>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">MCR</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Dublin (DUB)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                          <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£249</strong></span>
+                  </span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="tab-pane" id="london" role="tabpanel">
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">LGW</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Paris (CDG)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                        <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£100</strong></span>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">LGW</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Berlin (BER)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                        <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£89</strong></span>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">LGW</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Barcelona (BCN)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                        <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£1</strong></span>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">LGW</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Dublin (DUB)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                        <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£249</strong></span>
+                  </span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="tab-pane" id="liverpool" role="tabpanel">
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">LIV</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Paris (CDG)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                        <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£100</strong></span>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">LIV</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Berlin (BER)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                        <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£89</strong></span>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">LIV</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Barcelona (BCN)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                        <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£1</strong></span>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">LIV</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Dublin (DUB)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                        <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£249</strong></span>
+                  </span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="tab-pane" id="edinburgh" role="tabpanel">
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">EDI</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Paris (CDG)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                        <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£100</strong></span>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">EDI</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Berlin (BER)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                        <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£89</strong></span>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">EDI</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Barcelona (BCN)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                        <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£1</strong></span>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="live-search [ col-sm-12 col-md-6 ]">
+              <a href="#" class="link--unstyled live-search--data">
+                <div class="pr--0 [ col-md-7 col-lg-7 ]">
+                  <abbr title="Mancester">EDI</abbr> <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" /> Dublin (DUB)
+                </div>
+                <div class="live-search--meta [ col-md-5 col-lg-5 ]">
+                  <span class="mr--1">
+                        <span class="pr--1">18 Oct 17</span>
+                  <span class="live-search--price"><strong>£249</strong></span>
+                  </span>
+                </div>
+              </a>
             </div>
           </div>
         </div>
 
-        <!-- Sidebar -->
+        <div class="mt--3 col-xs-12 col-md-8 col-md-push-2">
+          <p>Prices shown are for one-way flights that our customers have recently found and started to book, so should be a good indication of popular routes and flight times. They are for reference only but we hope they help you find flights that offer
+            exceptional value.</p>
+        </div>
       </div>
+    </div>
   </section>
 
   <footer class="background--dark-grey footer">

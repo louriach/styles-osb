@@ -2643,16 +2643,19 @@
 </head>
 
 <body>
-  <header class="[ mb--3 pb--3 ] header--trim">
+  <header class="header header--trim">
     <nav class="[ relative z--1 ] navbar">
       <div class="container">
         <div class="navbar-header">
+          <div class="navbar-brand">
+            <a href="#" class="d--inline-block logo">
+                    OneStepBooking.com
+                  </a>
+            <div id="currency"></div>
+          </div>
           <button type="button" class="[ button button--outline ] navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-            </button>
-          <a class="navbar-brand" href="#">
-              OneStepBooking.com
-            </a>
+                  <span class="sr-only">Toggle navigation</span>
+              </button>
         </div>
         <div id="navbar" class="[ navbar-collapse collapse ]">
           <ul class="list--none menu-list">
@@ -2667,9 +2670,9 @@
             </li>
             <li class="dropdown">
               <a href="#" class="text--uppercase relative link__border nav__item dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  Your booking
-                </a>
-              <ul class="p--2 list--none [ dropdown-menu pull-right ] background--white">
+                      Your booking
+                    </a>
+              <ul class="list--none [ dropdown-menu pull-right ] background--white">
                 <li>
                   <a href="#" class="text--uppercase [ pb--1 pt--1 ]">Action</a>
                 </li>
@@ -2679,8 +2682,6 @@
               </ul>
             </li>
           </ul>
-          </li>
-          </ul>
         </div>
       </div>
     </nav>
@@ -2688,6 +2689,7 @@
       <div class="row">
         <div class="col-md-12 text--white">
           <h1 class="h2 mb--0 page-title">Book your flights</h1>
+          <p>Departing <strong>24/01/2017</strong> returning <strong>28/01/2017</strong></p>
         </div>
       </div>
     </div>
@@ -2702,23 +2704,26 @@
             <div class="[ p--1 mb--2 ] [ alert alert-warning alert-dismissible ]">
               We are holding these seats for you at this price, but suggest completing your booking within 10 minutes, so that you don't miss out
             </div>
+            <div class="[ p--1 mb--2 ] [ alert alert-danger alert-dismissible ]">
+              This is an error message
+            </div>
           </div>
 
-          <div class="[ p--0 mb--2 ] search-result--wrapper col-md-12">
-            <a href="#" class="search-result">
+          <!-- <div class="[ p--0 mb--2 ] search-result--wrapper col-md-12">
+            <div href="#" class="search-result">
               <div class="text--center small p--0 col-xs-12">
                 <div class="p--0 text--center col-md-12">
                   <div class="col-xs-12 col-sm-2 col-md-2">
                     <strong>Outbound:</strong>
                   </div>
                   <div class="col-xs-12 col-sm-2 col-md-2">
-                    <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--easyjet.png" alt="" class="airline-logo" />
+                    <img src="images/onestepbooking__logo--easyjet.png" alt="" class="airline-logo" />
                   </div>
                   <div class="p--0 [ col-xs-4 col-sm-2 col-md-2 ]">
                     <strong>23:50</strong> <abbr title="London Gatwick">LGW</abbr>
                   </div>
                   <div class="p--0 [ col-md-1 col-sm-1 col-xs-1 ]">
-                    <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" />
+                    <i class="fa fa-plane"></i>
                   </div>
                   <div class="p--0 [ col-xs-4 col-sm-2 col-md-2 ]">
                     <strong>01:10</strong> <abbr title="Barcelona">BCN</abbr> <span title="Lands next day">(+1)</span>
@@ -2733,13 +2738,13 @@
                     <strong>Inbound:</strong>
                   </div>
                   <div class="col-xs-12 col-sm-2 col-md-2">
-                    <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--easyjet.png" alt="" class="airline-logo" />
+                    <img src="images/onestepbooking__logo--easyjet.png" alt="" class="airline-logo" />
                   </div>
                   <div class="p--0 [ col-xs-4 col-sm-2 col-md-2 ]">
                     <strong>08:50</strong> <abbr title="Barcelona">BCN</abbr>
                   </div>
                   <div class="p--0 [ col-md-1 col-sm-1 col-xs-1 ]">
-                    <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__asset--plane.svg" alt="" class="plane" />
+                    <i class="fa fa-plane"></i>
                   </div>
                   <div class="p--0 [ col-xs-4 col-sm-2 col-md-2 ]">
                     <strong>10:55</strong> <abbr title="London Stansted"><span class="highlight" title="Returns to a different airport">STN</span></abbr>
@@ -2749,30 +2754,112 @@
                   </div>
                 </div>
               </div>
-            </a>
+            </div>
+          </div>-->
+        </div>
+
+        <div class="mb--3 col-sm-12 col-md-8 col-md-push-2">
+          <h2>Order summary</h2>
+          <div class="form-wrap col-sm-12 col-md-6">
+            <p><strong>Outbound</strong></p>
+            <table class="w--100 mb--2 table--padded">
+              <tbody>
+                <tr>
+                  <td>
+                    Airline:
+                  </td>
+                  <td>
+                    <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--easyjet.png" alt="" class="airline-logo" title="easyJet">
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Passengers:
+                  </td>
+                  <td>
+                    2 adults, 1 child
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Departing:
+                  </td>
+                  <td>
+                    23:50 <abbr title="London Gatwick">LGW</abbr>, 24/01/2017
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Arriving:
+                  </td>
+                  <td>
+                    01:10 <abbr title="Barcelona">BCN</abbr>, <span class="highlight" title="Flight arrives the next day">25</span>/01/2017
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="form-wrap col-sm-12 col-md-6">
+            <p><strong>Inbound</strong></p>
+            <table class="w--100 mb--2 table--padded">
+              <tbody>
+                <tr>
+                  <td>
+                    Airline:
+                  </td>
+                  <td>
+                    <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--easyjet.png" alt="" class="airline-logo" title="easyJet">
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Passengers:
+                  </td>
+                  <td>
+                    2 adults, 1 child
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Departing:
+                  </td>
+                  <td>
+                    08:50 <abbr title="Barcelona">BCN</abbr>, 24/01/2017
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Arriving:
+                  </td>
+                  <td>
+                    10:55 <abbr title="London Stansted"><span class="highlight" title="Returns to a different airport">STN</span></abbr>, 25/01/2017
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
         <form>
           <div class="mb--3 col-sm-12 col-md-8 col-md-push-2">
             <h2>Passenger details</h2>
-            <p>Please ensure that names are spelt exactly the same as they appear on the passenger's passport.</p>
-            <div class="passenger">
+            <p>Please ensure that names are spelled exactly the same as they appear on the passenger's passport.</p>
+            <div class="p--0 col-xs-12 col-sm-12 col-md-12 passenger">
               <div class="mb--1">
                 <a class="collapse--toggle collapsed link--clean" data-toggle="collapse" href="#passenger-1" aria-expanded="false" aria-controls="passenger-1">
-                  <strong>Passenger #1</strong> details
+                  Add <strong>Adult #1</strong> details
                 </a>
               </div>
               <div class="collapse" id="passenger-1">
-                <div class="p--0 mb--2 col-sm-6 form-wrap">
+                <div class="mb--2 col-sm-4 form-wrap">
                   <label for="first-name" class="d--block">First Name</label>
                   <input type="text" value="" placeholder="First name" name="first-name" class="input--border w--100" id="first-name">
                 </div>
-                <div class="p--0 mb--2 col-sm-6 form-wrap">
+                <div class="mb--2 col-sm-4 form-wrap">
                   <label for="last-name" class="d--block">Last Name</label>
                   <input type="text" value="" placeholder="Last name" name="last-name" class="input--border w--100" id="last-name">
                 </div>
-                <div class="p--0 mb--2 col-sm-6 form-wrap">
+                <div class="mb--2 col-sm-4 form-wrap">
                   <label for="first-name" class="d--block">Date of birth</label>
 
                   <select name="dob-day" class="input--border" id="dob-day">
@@ -2797,28 +2884,41 @@
               </select>
 
                 </div>
-                <div class="p--0 mb--2 col-sm-6 form-wrap">
+                <div class="mb--2 col-sm-6 form-wrap">
                   <label for="email" class="d--block">Email address</label>
                   <input type="text" value="" placeholder="Email address" name="email" class="input--border w--100" id="email">
                 </div>
+                <div class="mb--2 col-sm-6 form-wrap">
+                  <label for="last-name" class="d--block">Passport number</label>
+                  <input type="text" value="" placeholder="Passport number" name="last-name" class="input--border w--100" id="passport-number">
+                </div>
+                <div class="mb--2 col-sm-6 form-wrap">
+                  <label for="last-name" class="d--block">Baggage</label>
+                  <select name="baggage" class="input--border w--100" id="baggage">
+                      <option value="1">7kg carry on</option>
+                      <option value="1">15kg hold bag (+£15)</option>
+                      <option value="1">25kg hold bag (+£25)</option>
+                    </select>
+                </div>
               </div>
+              <div class="w--100 divider"></div>
             </div>
-            <div class="passenger">
+            <div class="p--0 col-xs-12 col-sm-12 col-md-12 passenger">
               <div class="mb--1">
                 <a class="collapse--toggle collapsed link--clean" data-toggle="collapse" href="#passenger-2" aria-expanded="false" aria-controls="passenger-2">
-                  <strong>Passenger #2</strong> details
+                  Add <strong>Adult #2</strong> details
                   </a>
               </div>
               <div class="collapse" id="passenger-2">
-                <div class="p--0 mb--2 col-sm-6 form-wrap">
+                <div class="mb--2 col-sm-6 form-wrap">
                   <label for="first-name" class="d--block">First Name</label>
                   <input type="text" value="" placeholder="First name" name="first-name" class="input--border w--100" id="first-name">
                 </div>
-                <div class="p--0 pl--1 mb--2 col-sm-6 form-wrap">
+                <div class="mb--2 col-sm-6 form-wrap">
                   <label for="last-name" class="d--block">Last Name</label>
                   <input type="text" value="" placeholder="Last name" name="last-name" class="input--border w--100" id="last-name">
                 </div>
-                <div class="p--0 mb--2 col-sm-6 form-wrap">
+                <div class="mb--2 col-sm-6 form-wrap">
                   <label for="first-name" class="d--block">Date of birth</label>
 
                   <select name="dob-day" class="input--border" id="dob-day">
@@ -2843,9 +2943,64 @@
               </select>
 
                 </div>
-                <div class="p--0 mb--2 col-sm-6 form-wrap">
-                  <label for="email" class="d--block">Email address</label>
-                  <input type="text" value="" placeholder="Email address" name="email" class="input--border w--100" id="email">
+                <div class="mb--2 col-sm-6 form-wrap">
+                  <label for="last-name" class="d--block">Baggage</label>
+                  <select name="baggage" class="input--border w--100" id="baggage">
+                      <option value="1">7kg carry on</option>
+                      <option value="1">15kg hold bag (+£15)</option>
+                      <option value="1">25kg hold bag (+£25)</option>
+                    </select>
+                </div>
+              </div>
+              <div class="w--100 divider"></div>
+            </div>
+            <div class="p--0 col-xs-12 col-sm-12 col-md-12 passenger">
+              <div class="mb--1">
+                <a class="collapse--toggle collapsed link--clean" data-toggle="collapse" href="#passenger-3" aria-expanded="false" aria-controls="passenger-3">
+                    Add <strong>Child #1</strong> details
+                    </a>
+              </div>
+              <div class="collapse" id="passenger-3">
+                <div class="mb--2 col-sm-6 form-wrap">
+                  <label for="first-name" class="d--block">First Name</label>
+                  <input type="text" value="" placeholder="First name" name="first-name" class="input--border w--100" id="first-name">
+                </div>
+                <div class="mb--2 col-sm-6 form-wrap">
+                  <label for="last-name" class="d--block">Last Name</label>
+                  <input type="text" value="" placeholder="Last name" name="last-name" class="input--border w--100" id="last-name">
+                </div>
+                <div class="mb--2 col-sm-6 form-wrap">
+                  <label for="first-name" class="d--block">Date of birth</label>
+
+                  <select name="dob-day" class="input--border" id="dob-day">
+                  <option value="1">19</option>
+                  <option value="1">1</option>
+                  <option value="1">1</option>
+                  <option value="1">1</option>
+                </select>
+
+                  <select name="dob-month" class="input--border" id="dob-month">
+                  <option value="1">March</option>
+                  <option value="1">1</option>
+                  <option value="1">1</option>
+                  <option value="1">1</option>
+                </select>
+
+                  <select name="dob-year" class="input--border" id="dob-year">
+                  <option value="1">1970</option>
+                  <option value="1">1</option>
+                  <option value="1">1</option>
+                  <option value="1">1</option>
+                </select>
+
+                </div>
+                <div class="mb--2 col-sm-6 form-wrap">
+                  <label for="last-name" class="d--block">Baggage</label>
+                  <select name="baggage" class="input--border w--100" id="baggage">
+                        <option value="1">7kg carry on</option>
+                        <option value="1">15kg hold bag (+£15)</option>
+                        <option value="1">25kg hold bag (+£25)</option>
+                      </select>
                 </div>
               </div>
             </div>
@@ -2877,8 +3032,185 @@
             <div class="p--0 col-sm-12">
               <label>
                 <input type="checkbox" checked="checked" name="terms" id="terms">
-                I accept the <a href="#">terms and conditions</a>.
+                I accept the <a href="#" data-toggle="modal" data-target="#terms-modal">terms and conditions</a>.
               </label>
+
+              <!-- Modal -->
+              <div class="modal fade modal--terms" id="terms-modal" tabindex="-1" role="dialog" aria-labelledby="terms-title" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="terms-title">OneStepBooking.com Terms</h5>
+                      <span class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </span>
+                    </div>
+                    <div class="modal-body">
+                      <p><strong>Service Fee.</strong> As these flights are non-commissionable, we charge a service fee of between £10pp and £30pp to cover our costs. This has been included in the total cost and is clearly itemised in the price panel on
+                        the booking page.&nbsp;</p>
+                      <p><strong>Baggage.</strong> Hand baggage is included. If you wish to add hold baggage for an extra charge and haven't already done so, you can do this just underneath the passenger names above.&nbsp;&nbsp;</p>
+                      <p><strong>Cancellation</strong>. This booking, the service fee and any credit card charges are strictly non-refundable. We strongly recommend that you take travel insurance before booking, as it may offer you some compensation should
+                        you need to cancel.</p>
+                      <p>The following Booking Conditions together with the General Information contained on our website form the basis of your relationship with BF Aviation Limited trading as directline-flights. Please read them carefully as they set out
+                        our respective rights and obligations.&nbsp;&nbsp;&nbsp;</p>
+                      <p><strong>Please note:</strong></p>
+                      <p>We act as agent only in respect of all flight bookings we take or make on your behalf. We accept no liability in relation to any contract you enter into or for any flight arrangements that you book or for the acts or omissions of
+                        any supplier or other person(s) or party(ies) connected with the flight arrangements. For all bookings your contract will be with the supplier of the flight arrangements concerned. We will identify the name of the supplier of your
+                        fight at the time of booking. The suppliers' booking conditions will apply to your contract. Copies of these terms and conditions are available from us on request or on the applicable supplier's website.</p>
+                      <p>References to "you" and "your" in these Booking Conditions mean all persons named on the booking (including anyone who is added or substituted at a later date). “We” “us” and “our” mean BF Aviation Limited trading as directline flights.</p>
+                      <p><strong>1. Booking and Confirmation</strong></p>
+                      <p>The first named person on the booking will be the party leader and will be responsible for making all payments due to us. He/she must be at least 18, and be authorised to make the booking on the basis of these booking conditions
+                        by all persons on the booking. By submitting a booking, the party leader confirms that he/she is so authorised and that all party members agree to be bound by these booking conditions. If the flight arrangements you wish to book
+                        are available, we will issue a booking confirmation email on behalf of the flight supplier concerned.&nbsp;The terms and conditions of the supplier, in addition to these conditions, will be applicable to the contract. NB Please
+                        note that due to Data Protection laws, we are only permitted to speak to/correspond with the party leader.&nbsp;</p>
+                      <hr/>
+                      <p>Contact us immediately if you do not receive this email or if any information which appears on the confirmation or any other document appears to be incorrect or incomplete as it may not be possible to make changes later. As we act
+                        only as agent we will have no responsibility for any errors in any documentation except where those errors were made by us.</p>
+                      </hr>
+                      <p><strong>Payment terms and method</strong></p>
+                      <p>As we act only as agent for the flight supplier concerned, we reserve the right to pass on to you in full all additional costs and charges of whatever nature imposed by the supplier in accordance with its own terms and conditions.</p>
+                      <p>Full payment is required for flight bookings at the time of booking. You must also pay all applicable insurance premiums if you wish to purchase the insurance policy we offer.</p>
+                      <p>We will advise you of all mandatory taxes, which you must pay before departure. However, many countries charge departure taxes that can only be paid locally. It is therefore recommended that you retain sufficient local currency to
+                        meet such charges. Details of departure taxes can be obtained from the relevant airline when you reconfirm your flight details.</p>
+                      <p>We accept payment by Delta, Switch/Maestro, MasterCard, Visa and Visa Electron.</p>
+                      <p>Payment Handling Fees (card charges) are detailed below:</p>
+                      <p>Debit Cards&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Fee</p>
+                      <p>Credit Cards&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.9% per transaction</p>
+                      <p>Cards are accepted subject to security and fraud checks. Debit cards issued outside of the UK will be processed as credit cards, and subject to our credit card Fee. Your bank or card issuer may also apply a foreign transaction fee.</p>
+                      <p>In the event that we incur bank charges as result of a cheque which has been stopped or marked ‘Refer to Drawer', we reserve the right to pass these charges on to you, together with an administration fee of £10 per transaction towards
+                        our costs.</p>
+                      <p>In the event that you do not pay the balance on the due date, or the nearest working day, then we reserve the right to add a late payment penalty of £20 to your booking.</p>
+                      <p>The online booking discount does not apply.</p>
+                      <p>Except where otherwise advised or stated in the booking conditions of the supplier concerned, all monies you pay to us for arrangements will be held on behalf of the supplier(s) concerned.</p>
+                      <p><strong>Advanced Passenger Information (API/APIS)</strong>Due to security measures, all airlines are required to provide Advance Passenger Information (API or APIS) for all passengers travelling to and from the UK on an international
+                        flight. The API requirements can vary from country to country but will include full names, date of birth, passport number, date of passport issue, place of passport issue and nationality. This is a separate requirement to getting
+                        a visa. Please be aware that failure to submit these details to the airline correctly may either result in you or a member of your party not being able to travel or in you being charged at the airport prior to boarding. Please
+                        check with the airline that you are travelling with whether these details need to be submitted prior to departure.We cannot be held responsible if anyone in your party is refused entry or travel if the data provided is late, inaccurate
+                        or incomplete. Please note that you will still need to follow any entry rules for the countries that you are planning to visit including any visa, customs and passport control regulations.</p>
+                      <p><strong>Amendments and cancellations</strong>Bookings for flights may be amended or cancelled in accordance with the relevant supplier terms and conditions and are subject to their amendment and cancellation charges.&nbsp; These
+                        are in addition to the Directline Flights amendment and cancellation charges detailed below.</p>
+                      <p>Amendments and cancellation fees vary between each supplier according to their individual terms and conditions. Should you make an amendment to your booking the price of your new flight will be based on the prices available on the
+                        day your booking is amended. Prices may not be the same as when you booked your flight, and therefore you will be required to cover any difference in price.</p>
+                      <p>Any amendment or cancellation requests must be e-mailed to admin@directline-flights.co.uk by the person who made the original booking, and paid the deposit. The e-mail must contain both your directline flights AND Airline booking
+                        references which you can find on your booking confirmation email.</p>
+                      <p>All confirmed flight only bookings are subject to directline flights cancellation charge of a minimum of £40 per person in addition to the charges of the applicable supplier. The charge for any amendment to your booking is a minimum
+                        of £25 per person.</p>
+                      <p><abbr title="Note being">NB.</abbr> If you have to cancel for a reason covered by your insurance policy, you may be able to recover your cancellation charges. Please check this with your insurance company.</p>
+                      <p><strong>Most scheduled airlines do not allow changes, and therefore full cancellation charges will usually apply. Most 'no frills' airlines have cancellation charges of 100% from time of booking. No refunds are available.</strong></p>
+                      <p><strong>Ticketing</strong></p>
+                      <p>Your tickets (where applicable) and any other documents relating to your booking will be sent to the address which you give us at the time of booking. Provided we have received payment for the total cost of the flight(s), we will
+                        dispatch your tickets (where applicable) to you at least 2 weeks prior to departure.</p>
+                      <p>For bookings made within 2 weeks of departure if it is necessary for us to make arrangements for you to collect your tickets from the departure airport, these bookings will incur a delivery charge which will be specified at the time
+                        of booking and is non-refundable.</p>
+                      <p>Please note that two airlines may share the same services, therefore a flight may not be operated by the airline whose designated code is shown on your itinerary and ticket.</p>
+                      <p><strong>Flight</strong> <strong>Information</strong></p>
+                      <p>We are not always in a position at the time of booking to confirm the carrier(s), aircraft type and flight timings which will be used in connection with your flight. Where we are only able to inform you of the likely carrier(s) at
+                        the time of booking, we shall inform you of the identity of the actual carrier(s) or any change in the identity of the actual carrier(s) as soon as we become aware of this. The carrier(s), flight timings and types of aircraft shown
+                        in this brochure and detailed on your confirmation invoice are for guidance only and are subject to alteration and confirmation. The latest timings will be shown on your tickets. You must accordingly check your tickets very carefully
+                        immediately on receipt to ensure you have the correct flight times. It is possible that flight times may be changed even after tickets have been despatched - we will contact you as soon as possible if this occurs.</p>
+                      <p>Any change in the identity of the carrier(s), flight timings, and/or aircraft type will not entitle you to cancel or change to other arrangements without paying ours and the supplier's normal charges.</p>
+                      <p>Please note the existence of a “Community list” (available for inspection at <a target="_blank" href="http://europa.eu.int/comm/transport/air/safety/flywell_en.htm">http://europa.eu.int/comm/transport/air/safety/flywell_en.htm</a>)
+                        detailing air carriers that are subject to an operating ban with the EU Community.</p>
+                      <p><strong>Flight Reconfirmation</strong>It is your responsibility to ensure that you reconfirm the departure date and times of all your flights prior to departure. This is particularly important for non-UK departures. Please refer
+                        to your supplier's website for details of who to contact.</p>
+                      <p><strong>Our Responsibility to you</strong>We act only as an agent for the flight supplier(s) concerned. Your contract for your flight arrangements is directly with the supplier(s) concerned. We accept no liability in relation to
+                        the flights themselves or for the acts or omissions of the supplier(s) concerned. For all bookings, the terms and conditions of the supplier will apply to your contract. However, in the event that we are found liable on any basis
+                        whatsoever in relation to your booking our maximum liability to you if we are found to have been at fault in relation to any service we provide as agent for the flight supplier(s) concerned (as opposed to any service provided by
+                        the supplier(s) for whom we are not responsible) is limited to twice the cost of the booking in question. We do not exclude or limit any liability for death or personal injury which arises as a result of our negligence or that
+                        of our employees whilst acting in the course of their employment.</p>
+                      <p><strong>Circumstances beyond our control</strong>Except where otherwise expressly stated in these conditions, we regret we cannot accept liability or pay any compensation where the performance or prompt performance of our obligations
+                        to you is prevented or affected by or you otherwise suffer any damage or loss as a result of "force majeure". In these Booking Conditions, "force majeure" means any event which we or the supplier of the service(s) in question could
+                        not, even with all due care, foresee or avoid. Such events may include war or threat of war, riot, civil strife, actual or threatened terrorist activity, industrial dispute, natural or nuclear disaster, adverse weather conditions,
+                        fire and all similar events outside our control.</p>
+                      <p><strong>Denied Boarding, delays, changes to and cancellation of your booking by the supplier.</strong> If there is a change to or cancellation of your flight booking we will pass on the new details to you together with any compensation
+                        or proposals that the supplier may offer. As agent only for the supplier we cannot accept any liability for any changes or cancellations made to your booking.</p>
+                      <p>Unfortunately delays sometimes occur and your welfare during this time is the responsibility of the airline concerned. We do not have any liability to you for any delays or for any schedule alterations. Please ensure you address
+                        any complaints to the Airline representative at the time. You should also check your insurance policy as you may have cover against delays.</p>
+                      <p>Under EU Law, you have rights in some circumstances to refunds and/or compensation from the airline in cases of denied boarding, cancellation or delay to flights. Full details of these rights will be publicised at EU airports and
+                        will also be available from airlines. You must claim the appropriate sums directly from the airline as reimbursement in such cases is the responsibility of the airline. You are not entitled to a refund of the price of your arrangements
+                        from us or the supplier concerned. If the airline does not comply with these rules you should complain to the air transport users council on 020 7240 6061 <a target="_blank" href="http://www.auc.org.uk/">www.auc.org.uk</a>.</p>
+                      <p><strong>Insurance</strong>It is a condition of booking that you have adequate insurance cover.&nbsp; Such insurance will ensure that you are properly covered against unexpected cancellation charges, medical costs that might be incurred
+                        while you're away, loss of money, or belongings, or personal liability claims. Please note that the cover offered by most credit card companies is rarely adequate for package holiday or holiday flight bookings.</p>
+                      <p>If you require insurance cover, directline flights will be pleased to arrange it at the time of booking, though you are free to make your own arrangements.&nbsp; We offer an excellent low-cost scheme which comes with a price guarantee.&nbsp;
+                        If you purchase directline flights insurance and decide that the cover provided does not meet your specific requirements, you may return the certificate to us within 14 days of purchase and a full refund of the premium will be
+                        made to you provided you have not travelled and have not made or are not intending to make an insurance claim. If you attempt to travel without adequate insurance you may be refused boarding, and you will be responsible for any
+                        costs incurred. Insurance cover will not be effective until payment of premiums has been made. Please read your policy and take it with you on your holiday. It is your responsibility to ensure that the insurance cover you purchase
+                        is suitable and adequate for your particular needs. NB, Travel Insurance may only be booked in conjunction with travel arrangements made through us. Please note that we are not connected in any way with Directline Insurance plc.</p>
+                      <p><strong>Insurance warranty</strong>1. At the time of effecting the insurance purchased through directline-flights you must confirm:</p>
+                      <p>(a) That you are not aware of any reason why the holiday should be cancelled or curtailed;</p>
+                      <p>(b) That no person to be covered by the insurance policy is receiving or awaiting treatment as a hospital in-patient;</p>
+                      <p>(c) That no person is travelling against the advice of their doctor or for the purpose of obtaining medical treatment or where a terminal prognosis has been given;</p>
+                      <p>(d) That if you or any other member of your party has received treatment as a hospital in-patient during the six months prior to booking you/they have obtained medical opinion as to the advisability of taking the holiday;</p>
+                      <p>2. You will advise the company if any of the above arise after taking this insurance</p>
+                      <p><strong>Lost/Stolen Flight Tickets</strong> If you lose your flight tickets or they are stolen before you leave the, certain airlines will not issue a replacement. You would then be required to purchase a new ticket and there may
+                        be a delay of up to 12 months before you receive any refund from the airline. If the airline concerned does issue a replacement ticket, we will require payment from you of a minimum of £25 per ticket administration fee plus any
+                        charges the airline make.&nbsp; If your ticket is lost or stolen after you have left the UK, certain airlines will not issue a duplicate. You will need to purchase a new ticket locally, at the local fare. When you return to the
+                        UK you can apply directly to the original airline for a refund on your lost and unused ticket, but any refund will be entirely at the discretion of the airline and it can take up to 12 months before the airline make any refund.</p>
+                      <p><strong>Airline Refund Procedures</strong> The refund policies operated by airlines vary greatly. If you return your unused ticket to us we will present it to the relevant airline for assessment. If the airline agrees to issue a
+                        refund, we will forward such refund to you less cancellation or administration charge. If you paid us by credit card, we will refund the amount due to you on your credit card, otherwise the refund will be made by cheque. Please
+                        note that any refund for part used/return halves of tickets is always less than pro-rata rate. Refunds usually take 10-12 weeks to process, but in some cases may take longer. Tickets returned more than one year from their date
+                        of issue are classed as expired by the airline and generally have no refund value at all. We recommend that tickets being sent to us for a refund are sent by recorded delivery post.</p>
+                      <p>For complaints arising from flight only bookings, we will act as a liaison between you and the supplier, to try to assist in resolving the problem. If we cannot help and you wish to take matters further, you must contact the supplier
+                        directly.</p>
+                      <p><strong>Complaints</strong> If you have any complaints concerning the booking services we provide as agent for the flight supplier(s) concerned (as opposed to any service provided by the supplier(s) for whom we are not responsible),
+                        you must inform us straight away in writing and in any event within 28 days of the end of any arrangements booked through us. Any assistance provided in resolving a complaint in relation to any arrangements is provided on a goodwill
+                        basis and in our capacity as agent only</p>
+                      <p>Please write to our offices in the UK. If you have special needs, which prevent you from writing to us then, where possible, we will accept details of your complaint over the telephone.</p>
+                      <p>The address to send complaints to is:</p>
+                      <div>Customer Services Department</div>
+                      <div>Directline Flights</div>
+                      <div>20 Southend Road</div>
+                      <div>Beckenham</div>
+                      <div>Kent</div>
+                      <div>BR3 1SD</div>
+                      <div>&nbsp;</div>
+                      <div>E-mail: <a href="mailto:admin@directline-holidays.co.uk">letters@directline-flights.co.uk</a></div>
+                      <div>Telephone: 0871 472 4635</div>
+                      <p>We would point out that failure to follow the above procedures and/or failure to complain within 28 days of your return, may reduce or extinguish any rights you have to claim compensation from us, or from any relevant supplier.&nbsp;&nbsp;</p>
+                      <p><strong>Passports &amp; Visa (British Citizens) and Health Requirements</strong></p>
+                      <p>It is your responsibility to ensure that you and all those travelling with you have a valid passport and any necessary visa and that you have obtained any necessary vaccinations to gain entry to any country you are visiting. We recommend
+                        that you check passport/visa requirements with the Embassy or Consulate of the country you intend to visit and that you consult your GP or the Foreign Office regarding health requirements. Requirements may change and you must check
+                        the up to date position in good time before departure. It is your responsibility to ensure that you are in possession of all necessary travel and health documents before departure. We regret we cannot accept any liability if you
+                        are refused entry onto any transport or into any country due to failure on your part to carry correct documentation. If failure to have any necessary travel or other documents results to fines, surcharges or other financial penalty
+                        being imposed on us, you will be responsible for reimbursing us accordingly.</p>
+                      <p>All clients must be in possession of a full 10-year passport. You MUST inform directline holidays if you are travelling on a British Subject's Passport.</p>
+                      <p><strong>Goa and Kerala</strong> - The Indian authorities will not permit Indian passport holders to travel on Charter Flights. A valid visa is required by British passport holders prior to travel.</p>
+                      <p><strong>Visas</strong> - The following applies to EC passport holders.&nbsp; Visas are required to be purchased in advance for certain countries, including Egypt and India. Other countries, including Israel and Turkey require tourist
+                        single entry visas to be purchased on arrival. If you are not travelling on an EC passport, other rules may apply.&nbsp; Please check for advice with the embassy of the country you are travelling to.</p>
+                      <p><strong>Medical Advice</strong> Please ensure that you ask a doctor for any medical advice applicable to the countries you will visit. Check what vaccinations you need with your GP at least six weeks before you travel. Make sure
+                        that any medication you need to take regularly is legal in the country you are travelling to. Pack any prescription medication in your hand luggage and take the prescription with you. If you are travelling within the EU, get a
+                        <a rel="nofollow" href="http://www.directline-holidays.co.uk/sub_page.cfm/title/EHIC/section/holiday_insurance/editID/22">EHIC</a> (formerly E111) from the Post Office so that you can get reduced or free emergency care.</p>
+                      <div><strong>Correct Spelling of Names, Titles</strong></div>
+                      <p>It is your responsibility to ensure all details you give us at the time of booking are correct and accurate, including but not limited to; all names, titles, initials, date of birth of those travelling, telephone numbers, email and
+                        postal addresses.&nbsp; Changes cannot be made at a later date without the imposition of cancellation and amendment charges in addition to any other costs or charges incurred by us or any of our suppliers.&nbsp;&nbsp;Please note
+                        too, that correct ages are required for insurance cover.</p>
+                      <p><strong>Pricing Errors</strong></p>
+                      <p>Directline-flights endeavours to ensure that all pricing and other information on its website is accurate. However, on very rare occasions, errors do occur. You must therefore ensure you check all details of your holiday with us
+                        at the time of booking.</p>
+                      <p>Should such an error occur, either through our own fault or the fault of our suppliers, we will contact the customers concerned within 48 hours. We reserve the right to cancel your booking and will provide a full refund. If your
+                        booking is cancelled by us within 48 hours of it being confirmed you will not be entitled to any compensation.</p>
+                      <p><strong>Special requests and medical problems</strong></p>
+                      <p>If you wish to make a special request, you must do so at the time of booking. We will try to pass any reasonable requests on to the relevant supplier but we cannot guarantee that requests will be met. The fact that a special request
+                        has been noted on your confirmation invoice or any other documentation or that it has been passed on to the supplier is not confirmation that the request will be met. Failure to meet any special request will not be a breach of
+                        contract on our part unless the request has been specifically confirmed.</p>
+                      <p>If you or any member of your party has any medical problem or disability which may affect your chosen holiday, you must give us full details in writing at the time of booking.</p>
+                      <p><strong>Law and Jurisdiction</strong> Your contract will be governed by English law and any disputes will be dealt with by the courts of England and Wales. If you live in Northern Ireland or Scotland, the courts of Northern Ireland
+                        or Scotland (as appropriate) can deal with any disputes.</p>
+                      <div>We reserve the right to alter these booking conditions and you should check our website at the time of booking.</div>
+                      <p>Data protection, privacy policy and marketing statement</p>
+                      <p><strong>Personal information</strong> We will provide your personal information, as well as any personal information you provide in relation to those other persons who form your booking party, to suppliers and transport providers
+                        who may be located outside the UK and/or EU, to enable the operation of the services requested by you. If you make special requests, which include, but are not limited to, special dietary, religious or disability-related requirements,
+                        which constitute sensitive information, the relevant data will also be passed to the relevant suppliers and transport providers to enable provision of the services to you. If you are aged under 16 on your departure date you must
+                        be accompanied by an adult aged 18 or over.&nbsp;</p>
+                      <p><strong>ATOL Protection</strong> If we, or the suppliers identified on your ATOL certificate, are unable to provide the services listed (or a suitable alternative, through an alternative ATOL holder or otherwise) for reasons of insolvency,
+                        the Trustees of the Air Travel Trust may make a payment to (or confer a benefit on) you under the ATOL scheme. You agree that in return for such a payment or benefit you assign absolutely to those Trustees any claims which you
+                        have or may have arising out of or relating to the non-provision of the services, including any claim against us, the travel agent (or your credit card issuer where applicable). You also agree that any such claims may be re-assigned
+                        to another body, if that other body has paid sums you have claimed under the ATOL scheme.</p>
+                      <p>Directline Flights is a trading name of BF Aviation Limited, a limited company incorporated in England and Wales under registration number 2762020, whose registered office is at East House, 109 South Worple Way, London SW14 8TN</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -2886,7 +3218,7 @@
 
             <h2>Card details</h2>
 
-            <ul class="list--inline mb--2 col-sm-12 [ nav nav-tabs ] scrolling-list" role="tablist">
+            <ul class="list--inline mb--1 col-sm-12 [ nav nav-tabs ] scrolling-list" role="tablist">
 
               <li class="list--none nav-item active">
                 <a href="#debit" class="text--black button nav-link" data-toggle="tab" role="tab">
@@ -2914,19 +3246,17 @@
               </li>
             </ul>
 
-            <div class="[ tab-content tab-content--bordered ] mb--2 col-sm-12 col-md-12">
+            <div class="[ tab-content tab-content--bordered ] mb--3 col-sm-12 col-md-12">
               <div class="tab-pane active" id="debit" role="tabpanel">
-                <div class="col-sm-12 col-md-12">
-                </div>
-                <div class="p--0 pr--1 mb--2 col-sm-6">
+                <div class="mb--2 form-wrap col-sm-6">
                   <label for="card-number" class="d--block">Card number</label>
                   <input type="text" value="" placeholder="Card number" name="card-number" class="input--border w--100" id="card-number">
                 </div>
-                <div class="p--0 pl--1 mb--2 col-sm-6">
+                <div class="mb--2 form-wrap col-sm-6">
                   <label for="card-name" class="d--block">Cardholder name</label>
                   <input type="text" value="" placeholder="Cardholder name" name="card-name" class="input--border w--100" id="card-name">
                 </div>
-                <div class="p--0 pr--1 col-sm-6">
+                <div class="form-wrap col-sm-6">
                   <label for="card-expiry-1" class="d--block">Expiry date</label>
                   <select name="card-expiry-1" class="input--border" id="card-expiry-1">
                 <option value="1">05</option>
@@ -2947,22 +3277,22 @@
                 <option value="1">1</option>
               </select>
                 </div>
-                <div class="p--0 pl--1 col-sm-6">
+                <div class="form-wrap col-sm-6">
                   <label for="card-security" class="d--block">Security code</label>
                   <input type="text" value="" placeholder="Code" name="card-name" class="input--border w--100" id="card-security">
                 </div>
               </div>
               <div class="tab-pane" id="credit" role="tabpanel">
                 <p>Credit card transactions carry a <strong>1% card fee</strong></p>
-                <div class="p--0 pr--1 mb--2 col-sm-6">
+                <div class="mb--2 form-wrap col-sm-6">
                   <label for="card-number" class="d--block">Card number</label>
                   <input type="text" value="" placeholder="Card number" name="card-number" class="input--border w--100" id="card-number">
                 </div>
-                <div class="p--0 pl--1 mb--2 col-sm-6">
+                <div class="mb--2 form-wrap col-sm-6">
                   <label for="card-name" class="d--block">Cardholder name</label>
                   <input type="text" value="" placeholder="Cardholder name" name="card-name" class="input--border w--100" id="card-name">
                 </div>
-                <div class="p--0 pr--1 col-sm-6">
+                <div class="form-wrap col-sm-6">
                   <label for="card-expiry-1" class="d--block">Expiry date</label>
                   <select name="card-expiry-1" class="input--border" id="card-expiry-1">
                 <option value="1">05</option>
@@ -2983,18 +3313,89 @@
                 <option value="1">1</option>
               </select>
                 </div>
-                <div class="p--0 pl--1 col-sm-6">
+                <div class="form-wrap col-sm-6">
                   <label for="card-security" class="d--block">Security code</label>
                   <input type="text" value="" placeholder="Code" name="card-name" class="input--border w--100" id="card-security">
                 </div>
               </div>
             </div>
-            <div class="divider col-sm-12 col-md-12"></div>
-            <div class="mb--2 col-xs-6 col-sm-6">
-              Total price: <strong>£101</strong> inc. £1 booking fee.
+            <div class="p--0 mb--2 col-sm-12">
+              <h2>Price summary</h2>
+              <table class="w--100 table--padded">
+                <tbody>
+                  <tr>
+                    <td>
+                      Adult #1 flight:
+                    </td>
+                    <td>
+                      £100
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Adult #2 flight:
+                    </td>
+                    <td>
+                      £100
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Child flight:
+                    </td>
+                    <td>
+                      £25
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Baggage - Passenger #1:
+                    </td>
+                    <td>
+                      <div>£0 - 7kg carry on</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Baggage - Passenger #2:
+                    </td>
+                    <td>
+                      <div>£15 - 25kg carry on</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Baggage - Child #1:
+                    </td>
+                    <td>
+                      <div>£0 - 7kg carry on</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Booking fee:
+                    </td>
+                    <td>
+                      £1
+                    </td>
+                  </tr>
+                  <tr class="large">
+                    <td>
+                      <strong>
+                        Total amount:
+                      </strong>
+                    </td>
+                    <td>
+                      <strong>
+                        £241
+                      </strong>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div class="mb--2 text--right col-xs-6 col-sm-6">
-              <input type="submit" value="Book flight" name="book" class="button button--orange" id="book">
+            <div class="p--0 mb--2 text--right col-xs-12">
+              <input type="submit" value="Book flight" name="book" class="button button--green" id="book">
             </div>
         </form>
         </div>
@@ -3005,6 +3406,23 @@
     <div class="container">
       <div class="row">
         <div class="[ text--center text--white small ] [ pb--3 pt--3 ] col-md-12">
+          <div class="mb--3">
+            <img src="https://louriach.github.io/styles-osb/public/images/onestepbooking__logo--white.svg">
+          </div>
+          <ul class="list--none list--inline">
+            <li>
+              <a href="#" class="text--white">About Us</a>
+            </li>
+            <li>
+              <a href="#" class="text--white">Contact Us</a>
+            </li>
+            <li>
+              <a href="#" class="text--white">Booking Conditions</a>
+            </li>
+            <li>
+              <a href="#" class="text--white">Privacy Policy</a>
+            </li>
+          </ul>
           <p>OneStepBooking.com is a trading name of BF Aviation Ltd, a limited company incorporated in England and Wales under registration number 08615973, whose registered office is at 16 Beaufort Court, Admirals Way, Docklands, London, E14 9XL.</p>
           <div class="copyright">
             © OneStepBooking.com All Rights Reserved.
@@ -3013,6 +3431,51 @@
       </div>
     </div>
   </footer>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+      //Dropdown plugin data
+      var ddData = [{
+          text: "<span class='flag-icon flag-icon-us'></span> USD",
+          value: 1,
+          selected: false,
+        },
+        {
+          text: "<span class='flag-icon flag-icon-gb'></span> GBP",
+          value: 2,
+          selected: false,
+        },
+        {
+          text: "<span class='flag-icon flag-icon-au'></span> AUD",
+          value: 3,
+          selected: false,
+        },
+        {
+          text: "<span class='flag-icon flag-icon-us'></span> USD",
+          value: 4,
+          selected: false,
+        },
+        {
+          text: "<span class='flag-icon flag-icon-gb'></span> GBP",
+          value: 5,
+          selected: false,
+        },
+        {
+          text: "<span class='flag-icon flag-icon-au'></span> AUD",
+          value: 6,
+          selected: false,
+        }
+      ];
+
+      $('#currency').mouseenter(function(event) {
+        $('body').css('overflow', 'hidden');
+      }).mouseleave(function(event) {
+        $('body').css('overflow', '');
+      });
+
+    });
+  </script>
 
 </body>
 

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "timestamp": 1501497818744,
+  "timestamp": 1507442318177,
   "graph": {
     "options": {
       "directed": true,
@@ -34,6 +34,30 @@
       },
       {
         "v": "01-templates/05-email-confirmation.mustache",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "01-templates/06-loading.mustache",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "01-templates/07-landing.mustache",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "01-templates/08-contact.mustache",
+        "value": {
+          "compileState": "clean"
+        }
+      },
+      {
+        "v": "01-templates/about.mustache",
         "value": {
           "compileState": "clean"
         }
